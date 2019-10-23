@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '../Card/Card'
 import PropTypes from 'prop-types';
+import '../MoviesContainer/MoviesContainer.css'
 
 const MoviesContainer = ({ movies }) => {
     const cards = movies.map(movie => {
@@ -16,8 +17,11 @@ const MoviesContainer = ({ movies }) => {
       })
 
   return (
-    <div>
-      {cards}
+    <div className="scroll-wrapper">
+      <div className="movies-container">
+        {/* <h1>Current Movies</h1> */}
+        {cards}
+      </div>
     </div>
   )
 }

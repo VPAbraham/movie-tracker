@@ -1,0 +1,19 @@
+.scroll-wrapper {
+    width: 100vh;
+    height: 100vw;
+    transform: rotate(-90deg) translateX(-100vh);
+    transform-origin: top left;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: absolute;
+}
+
+.movies-container {
+    background-color: teal;
+    display:flex;
+    flex-direction: row;
+    width: 723.5vw;
+    transform: rotate(90deg) translateY(-105vh);
+    transform-origin: top left;
+    
+}

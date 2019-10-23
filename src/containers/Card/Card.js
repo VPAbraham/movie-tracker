@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../Card/Card.css'
 
 const Card = ({ poster, title, favorited }) => {
   let faveClass = favorited ? "faved" : "notFaved";
