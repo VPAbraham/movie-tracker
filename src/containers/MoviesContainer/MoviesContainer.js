@@ -9,7 +9,7 @@ const MoviesContainer = ({ movies }) => {
       return (
         <Card 
         key={movie.id}
-        poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+        poster={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
         title={movie.title}
         favorited="false"
         />
