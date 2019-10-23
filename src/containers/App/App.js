@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
 import MoviesContainer from '../MoviesContainer/MoviesContainer'
+import { saveMovies } from '../../actions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchMovies } from '../../apiCalls.js';
 
 class App extends Component {
   constructor() {
@@ -11,10 +15,19 @@ class App extends Component {
     }
   }
 
-  componentDidMount = () => {
-    fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=28964418fdafb10fc97bbbad131d01c3&language=en-US&page=1')
-    .then(r => r.json())
-    .then(data => this.setState({ movieData: data.results }))
+
+
+  async componentDidMount() {
+    const { saveMovies } = this.props; 
+    try {
+      const movies = await fetchMovies();
+      console.log(movies);
+      console.log(this.props)
+      saveMovies(movies)
+    }
+    catch {
+
+    }
   }
 
   render() {
@@ -26,4 +39,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    saveMovies,
+  }, dispatch)
+)
+
+export default connect(null, mapDispatchToProps)(App);
