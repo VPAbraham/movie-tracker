@@ -6,6 +6,7 @@ import { saveMovies } from '../../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchMovies } from '../../apiCalls.js';
+import LoginForm from '../../components/LoginForm/LoginForm';
 
 class App extends Component {
   constructor() {
@@ -33,6 +34,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Route exact path='/login' render={() => <LoginForm/>} />
         <Route exact path='/' render={() => <MoviesContainer movies={this.state.movieData} /> } />
       </div>
     )
