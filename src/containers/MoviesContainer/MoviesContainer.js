@@ -10,7 +10,6 @@ const MoviesContainer = ({ movies }) => {
         key={movie.id}
         poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         title={movie.title}
-        year={movie.year}
         favorited="false"
         />
         )
