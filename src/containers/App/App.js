@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
+import MoviesContainer from '../MoviesContainer/MoviesContainer'
 
 class App extends Component {
   constructor() {
@@ -19,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route exact path='/' component={} />
+        <Route exact path='/' render={() => <MoviesContainer movies={this.state.movieData} /> } />
       </div>
     )
   }
