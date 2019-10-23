@@ -11,8 +11,9 @@
 .movies-container {
     background-color: teal;
     display:flex;
+    justify-content: center;
     flex-direction: row;
-    width: 723.5vw;
+    width: fit-content;
     transform: rotate(90deg) translateY(-105vh);
     transform-origin: top left;
     
