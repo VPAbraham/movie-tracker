@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { createNewUser, loginUser } from '../../apiCalls'
+import { Link, Redirect } from 'react-router-dom';
 
 class LoginForm extends Component {
     constructor() {
@@ -22,7 +23,6 @@ class LoginForm extends Component {
     }
 
     handleChange = (e) => {
-        console.log('EVENT', e.target.value)
         this.setState({[e.target.name]: e.target.value});
     }
 
@@ -31,11 +31,12 @@ class LoginForm extends Component {
         const { loginEmail, loginPassword } = this.state;
         const user = { email: loginEmail, password: loginPassword};
         this.props.logUserIn(user);
+
+
         this.setState({ loginEmail: '', loginPassword: ''})
     }
     
     render() {
-        // console.log('STATE', this.state)
         return(
             <div>
                 <section className="create-account">
@@ -46,7 +47,6 @@ class LoginForm extends Component {
                         <input type="password" placeholder="insert your password" name="newPassword" value={this.state.newPassword} onChange={this.handleChange} />
                         <button className="create-user-button" onClick={(e) => this.submitNewUserInfo(e)}>SUBMIT</button>
                     </form>
-                    {console.log('STATE',this.state)}
                 </section>
                 <h3>OR</h3>
                 <section className="login">

@@ -40,15 +40,13 @@ export const loginUser = async (userInfo) => {
   
   try {
     const response = await fetch('http://localhost:3001/api/v1/login', options);
-      if(!response.ok) {
+      if(response.status >= 400) {
         throw new Error("Sorry. Unable to log in user.");
+      } else {
+        const user = await response.json();
+        return user;
       }
-      const user = await response.json();
-      console.log('LOGIN FROM API CALLS', user)
-      return user;
   } catch(error) {
     throw new Error(error.message)
   }
 }
-
-//need a method for login users
