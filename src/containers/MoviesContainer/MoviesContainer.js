@@ -1,11 +1,12 @@
 import React from 'react';
-import Card from '../Card/Card'
+import Card from '../Card/Card';
 import PropTypes from 'prop-types';
-import '../MoviesContainer/MoviesContainer.css'
+import '../MoviesContainer/MoviesContainer.scss'
+import { connect } from 'react-redux'
 
 const MoviesContainer = ({ movies }) => {
-    const cards = movies.map(movie => {
-      console.log(movie)
+  console.log(movies)
+  const movieCards = movies.map(movie => {
       return (
         <Card 
         key={movie.id}
@@ -19,11 +20,14 @@ const MoviesContainer = ({ movies }) => {
   return (
     <div className="scroll-wrapper">
       <div className="movies-container">
-        {/* <h1>Current Movies</h1> */}
-        {cards}
+        {movieCards}
       </div>
     </div>
   )
 }
 
-export default MoviesContainer;
+const mapStateToProps = ({ movies }) => ({
+  movies
+})
+
+export default connect(mapStateToProps, null)(MoviesContainer)

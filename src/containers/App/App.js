@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 import MoviesContainer from '../MoviesContainer/MoviesContainer'
 import { saveMovies } from '../../actions';
 import { connect } from 'react-redux';
@@ -10,27 +10,15 @@ import LoginForm from '../../components/LoginForm/LoginForm';
 import { createNewUser } from '../../apiCalls'
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      movieData: [],
-      // users: [],
-      error: ''
-    }
-  }
-
-
-
   async componentDidMount() {
-    const { saveMovies } = this.props; 
+    const { movies } = this.props; 
+    console.log(movies)
     try {
-      const movies = await fetchMovies();
-      console.log(movies);
-      console.log(this.props)
-      saveMovies(movies)
+      const movieData = await fetchMovies();
+      await this.props.saveMovies(movieData)
     }
-    catch {
 
+    catch {
     }
   }
 
@@ -47,8 +35,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Route exact path='/' render={() => <MoviesContainer /> } />
         <Route exact path='/login' render={() => <LoginForm addNewUser={this.addNewUser}/>} />
-        <Route exact path='/' render={() => <MoviesContainer movies={this.state.movieData} /> } />
       </div>
     )
   }
@@ -60,4 +48,8 @@ const mapDispatchToProps = dispatch => (
   }, dispatch)
 )
 
-export default connect(null, mapDispatchToProps)(App);
+const mapStateToProps = ({ movies }) => ({
+  movies,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
