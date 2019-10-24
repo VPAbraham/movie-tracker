@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { createNewUser, loginUser } from '../../apiCalls'
+import { Link, Redirect } from 'react-router-dom';
 
 class LoginForm extends Component {
     constructor() {
@@ -7,26 +9,34 @@ class LoginForm extends Component {
             newName: '',
             newEmail: '',
             newPassword: '',
-            // loginName: '', //do we need this??
             loginEmail: '',
             loginPassWord: ''
         }
     }
+
     submitNewUserInfo = event => {
         event.preventDefault()
         const { newName, newEmail, newPassword } = this.state
         const newUser = {name: newName, email: newEmail, password: newPassword}
-        this.setState({newName: '', newEmail: '', newPassword: ''})
         this.props.addNewUser(newUser);
+        this.setState({newName: '', newEmail: '', newPassword: ''})
     }
 
     handleChange = (e) => {
-        console.log('EVENT', e.target.value)
         this.setState({[e.target.name]: e.target.value});
+    }
+
+    loginUser = (e) => {
+        e.preventDefault();
+        const { loginEmail, loginPassword } = this.state;
+        const user = { email: loginEmail, password: loginPassword};
+        this.props.logUserIn(user);
+
+
+        this.setState({ loginEmail: '', loginPassword: ''})
     }
     
     render() {
-        // console.log('STATE', this.state)
         return(
             <div>
                 <section className="create-account">
@@ -37,7 +47,6 @@ class LoginForm extends Component {
                         <input type="password" placeholder="insert your password" name="newPassword" value={this.state.newPassword} onChange={this.handleChange} />
                         <button className="create-user-button" onClick={(e) => this.submitNewUserInfo(e)}>SUBMIT</button>
                     </form>
-                    {console.log('STATE',this.state)}
                 </section>
                 <h3>OR</h3>
                 <section className="login">
@@ -45,7 +54,7 @@ class LoginForm extends Component {
                     <form>
                         <input type="email" placeholder="insert login e-mail" name="loginEmail" value={this.state.loginEmail} onChange={this.handleChange} />
                         <input type="text" placeholder="insert login password" name="loginPassword" value={this.state.loginPassword} onChange={this.handleChange} />
-                        {/* <button onClick={this.createNewUser}>LOG IN</button> */}
+                        <button onClick={(e) => this.loginUser(e)}>LOG IN</button>
                     </form>
                 </section>
             </div>

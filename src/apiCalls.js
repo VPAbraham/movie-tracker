@@ -8,15 +8,14 @@ export const fetchMovies = async () => {
 }
 
 export const createNewUser = async (newUserInfo) => {
-  // e.preventDefault();
   const options = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(newUserInfo)
-  
   };
+  
   try {
     const response = await fetch('http://localhost:3001/api/v1/users', options);
       if(!response.ok) {
@@ -28,7 +27,26 @@ export const createNewUser = async (newUserInfo) => {
   } catch(error) {
     throw new Error(error.message)
   }
-
 }
 
-//need a method for login users
+export const loginUser = async (userInfo) => {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userInfo)
+  };
+  
+  try {
+    const response = await fetch('http://localhost:3001/api/v1/login', options);
+      if(response.status >= 400) {
+        throw new Error("Sorry. Unable to log in user.");
+      } else {
+        const user = await response.json();
+        return user;
+      }
+  } catch(error) {
+    throw new Error(error.message)
+  }
+}
