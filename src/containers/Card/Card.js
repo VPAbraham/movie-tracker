@@ -7,7 +7,7 @@ const Card = ({ poster, title, favorited }) => {
 
   return (
     <div className="card">
-      <img src={poster} alt="movie poster" />
+      <img className="card-img" src={poster} alt="movie poster" />
       <h3>{title}</h3>
       <h5 className={faveClass}>Insert fave icon here</h5>
     </div>

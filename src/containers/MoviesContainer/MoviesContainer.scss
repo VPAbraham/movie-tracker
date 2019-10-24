@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Zilla+Slab&display=swap');
+
 .scroll-wrapper {
     width: 100vh;
     height: 100vw;
@@ -6,17 +8,18 @@
     overflow-y: scroll;
     overflow-x: hidden;
     position: absolute;
+    background-color: rgb(20, 19, 19);
 }
 
 .movies-container {
-    background-color: teal;
-    display:flex;
+    background-color: #3C4042;
+    display: flex;
+    font-family: 'Zilla Slab', serif;
     justify-content: center;
     flex-direction: row;
     width: fit-content;
     transform: rotate(90deg) translateY(-105vh);
     transform-origin: top left;
-    // padding: 0 8%;
 }
 
 .arrow {
@@ -24,4 +27,3 @@
     width: auto;
     margin: auto;
 }
-
