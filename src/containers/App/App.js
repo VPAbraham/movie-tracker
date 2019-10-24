@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import './App.scss';
-import MoviesContainer from '../MoviesContainer/MoviesContainer'
+import MoviesContainer from '../MoviesContainer/MoviesContainer';
+import NavBar from '../../components/NavBar/NavBar';
 import { saveMovies } from '../../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -35,6 +36,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <NavBar />
         <Route exact path='/' render={() => <MoviesContainer /> } />
         <Route exact path='/login' render={() => <LoginForm addNewUser={this.addNewUser}/>} />
       </div>

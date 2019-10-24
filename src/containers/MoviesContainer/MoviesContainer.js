@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '../Card/Card';
 import PropTypes from 'prop-types';
+import images from '../../assets/images';
 import '../MoviesContainer/MoviesContainer.scss'
 import { connect } from 'react-redux'
 
@@ -20,7 +21,9 @@ const MoviesContainer = ({ movies }) => {
   return (
     <div className="scroll-wrapper">
       <div className="movies-container">
+        <img className="left-arrow arrow" src={images.leftArrow} alt="left arrow"/>
         {movieCards}
+        <img className="right-arrow arrow" src={images.rightArrow} alt="right arrow"/>
       </div>
     </div>
   )

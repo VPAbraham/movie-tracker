@@ -10,7 +10,6 @@ import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const store = createStore(rootReducer, composeWithDevTools())
-
 const router = (
   <Provider store={store}>
     <Router>

@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cabin&display=swap');
+
+.nav-bar {
+  background-color: rgb(20, 19, 19);
+  color: lightgray;
+  height: 12vh;
+  font-size: 2em;
+  vertical-align: middle;
+}
+
+.main-logo {
+  font-family: 'Josefin Slab', serif;
+  float: left;
+  display: inline-block;
+
+  .logo-second {
+    font-family: 'Cabin', sans-serif;
+  }
+}
+
+.menu {
+  display: flex;
+  float: right;
+  font-size: .7em;
+
+  .menu-item {
+    margin: 0 13px;
+  }
+}
