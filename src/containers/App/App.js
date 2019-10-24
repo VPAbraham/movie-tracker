@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 import MoviesContainer from '../MoviesContainer/MoviesContainer'
 import { saveMovies } from '../../actions';
 import { connect } from 'react-redux';
