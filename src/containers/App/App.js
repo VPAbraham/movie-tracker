@@ -8,32 +8,24 @@ import { bindActionCreators } from 'redux';
 import { fetchMovies } from '../../apiCalls.js';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      movieData: []
-    }
-  }
-
 
 
   async componentDidMount() {
-    const { saveMovies } = this.props; 
+    const { movies } = this.props; 
+    console.log(movies)
     try {
-      const movies = await fetchMovies();
-      console.log(movies);
-      console.log(this.props)
-      saveMovies(movies)
+      const movieData = await fetchMovies();
+      await this.props.saveMovies(movieData)
     }
-    catch {
 
+    catch {
     }
   }
 
   render() {
     return (
       <div className="App">
-        <Route exact path='/' render={() => <MoviesContainer movies={this.state.movieData} /> } />
+        <Route exact path='/' render={() => <MoviesContainer /> } />
       </div>
     )
   }
@@ -45,4 +37,8 @@ const mapDispatchToProps = dispatch => (
   }, dispatch)
 )
 
-export default connect(null, mapDispatchToProps)(App);
+const mapStateToProps = ({ movies }) => ({
+  movies,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
