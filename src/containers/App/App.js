@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchMovies } from '../../apiCalls.js';
 import LoginForm from '../../components/LoginForm/LoginForm';
-import { createNewUser } from '../../apiCalls'
+import { createNewUser, loginUser } from '../../apiCalls'
 
 class App extends Component {
   async componentDidMount() {
@@ -30,13 +30,19 @@ class App extends Component {
     }
   }
 
-  //will need a method for the login users
+  logUserIn = async (userInfo) => {
+    try {
+      await loginUser(userInfo);
+    } catch({ message }) {
+      this.setState({error: message})
+    }
+  }
 
   render() {
     return (
       <div className="App">
         <Route exact path='/' render={() => <MoviesContainer /> } />
-        <Route exact path='/login' render={() => <LoginForm addNewUser={this.addNewUser}/>} />
+        <Route exact path='/login' render={() => <LoginForm addNewUser={this.addNewUser} logUserIn={this.logUserIn} />} />
       </div>
     )
   }
