@@ -6,6 +6,7 @@ import './App.scss';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import NavBar from '../../components/NavBar/NavBar';
 import LoginForm from '../../components/LoginForm/LoginForm';
+import NewUserForm from '../../components/NewUserForm/NewUserForm';
 import { saveMovies } from '../../actions';
 import { fetchMovies } from '../../apiCalls.js';
 
@@ -24,6 +25,8 @@ class App extends Component {
         <NavBar />
         <Route exact path='/' render={() => <MoviesContainer /> } />
         <Route exact path='/login' render={() => <LoginForm />} />
+        <Route exact path='/new-user' render={() => <NewUserForm />} />
+        {/* <Route exact path='/favorites' render={() => <FavoritesContainer />} /> */}
       </div>
     )
   }

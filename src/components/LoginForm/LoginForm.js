@@ -39,7 +39,7 @@ class LoginForm extends Component {
                 <section className="login">
                     <h3>LOG IN</h3>
                     <form>
-                        <input type="email" placeholder="insert login e-mail" name="loginEmail" value={this.state.loginEmail} onChange={this.handleChange} />
+                       <input type="email" placeholder="insert login e-mail" name="loginEmail" value={this.state.loginEmail} onChange={this.handleChange} />
                         <input type="text" placeholder="insert login password" name="loginPassword" value={this.state.loginPassword} onChange={this.handleChange} />
                         <button onClick={(e) => this.loginUser(e)}>LOG IN</button>
                     </form>
