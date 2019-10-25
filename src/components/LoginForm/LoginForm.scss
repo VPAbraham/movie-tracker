@@ -1,0 +1,21 @@
+.login {
+    background: url('https://bbbslubbock.org/wp-content/uploads/2018/10/grey-background-for-site-for-website-1432015867.jpg');
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    height: 100vh;
+}
+
+.login-button {
+    font-size: 2em;
+    color: lightgrey;
+    font-weight: bold;
+    height: 2.5em;
+    width: 700px;
+    background-color: rgba(0,0,0,0.5)
+}
+
+a.a-login-button:hover {
+    background-color: white;
+}

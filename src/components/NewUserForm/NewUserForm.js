@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
+import './NewUserForm.scss'
 
 
 class NewUserForm extends Component {
