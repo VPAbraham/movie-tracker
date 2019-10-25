@@ -5,12 +5,9 @@ import { connect } from 'react-redux';
 import './App.scss';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import NavBar from '../../components/NavBar/NavBar';
-import { saveMovies, saveUser, saveFavorites } from '../../actions';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import NewUserForm from '../../components/NewUserForm/NewUserForm';
-import { saveMovies } from '../../actions';
+import { saveMovies, saveUser, saveFavorites } from '../../actions';
 import { fetchMovies } from '../../apiCalls.js';
 
 class App extends Component {
