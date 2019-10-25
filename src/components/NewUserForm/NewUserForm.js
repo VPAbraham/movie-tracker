@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { createNewUser } from '../../apiCalls'
+import './NewUserForm.scss';
 
 class NewUserForm extends Component {
     constructor() {
@@ -34,14 +35,14 @@ class NewUserForm extends Component {
     
     render() {
         return(
-            <div>
+            <div className="new-user-container">
+                    {/* <h3>CREATE ACCOUNT</h3> */}
                 <section className="create-account">
-                    <h3>CREATE ACCOUNT</h3>
                     <form>
-                        <input type="text" placeholder="insert your name" name="newName" value={this.state.newName} onChange={this.handleChange} />
+                        <input className="name-input" type="text" placeholder="insert your name" name="newName" value={this.state.newName} onChange={this.handleChange} />
                         <input type="email" placeholder="insert your e-mail" name="newEmail" value={this.state.newEmail} onChange={this.handleChange} />
                         <input type="password" placeholder="insert your password" name="newPassword" value={this.state.newPassword} onChange={this.handleChange} />
-                        <button className="create-user-button" onClick={(e) => this.submitNewUserInfo(e)}>SUBMIT</button>
+                        <a className="a-create-button"><button className="create-user-button" onClick={(e) => this.submitNewUserInfo(e)}>SUBMIT</button></a>
                     </form>
                 </section>
             </div>

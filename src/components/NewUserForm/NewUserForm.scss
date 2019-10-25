@@ -1,0 +1,48 @@
+.create-account {
+    background: url('https://designshack.net/wp-content/uploads/best-subtle-black-white-background-textures.jpg');
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    height: 100vh;
+
+}
+
+form {
+    // background-color: black;
+    height: 500px;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+input {
+    font-size: 2.5em;
+    color: white;
+    padding-left: 15px;
+    border: none;
+    border-bottom: solid black 5px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.create-user-button {
+    font-size: 2em;
+    color: lightgrey;
+    font-weight: bold;
+    height: 2.5em;
+    width: 700px;
+    background-color: rgba(0,0,0,0.5)
+}
+
+a.a-create-button:hover {
+    background-color: white;
+}
+
+
+
+
+
+
+
