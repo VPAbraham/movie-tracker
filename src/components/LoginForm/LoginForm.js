@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { loginUser } from '../../apiCalls'
+import { Redirect } from 'react-router-dom'
 import './LoginForm.scss'
 import { Link } from 'react-router-dom';
 
@@ -7,35 +7,41 @@ class LoginForm extends Component {
     constructor() {
         super()
         this.state = {
-            newName: '',
-            newEmail: '',
-            newPassword: '',
             loginEmail: '',
-            loginPassWord: ''
+            loginPassWord: '',
+            status: null
         }
     }
     
-    logUserIn = async (userInfo) => {
-        try {
-          await loginUser(userInfo);
-        } catch({ message }) {
-          this.setState({error: message})
-        }
-    }
-
     handleChange = (e) => {
-        this.setState({[e.target.name]: e.target.value});
+      this.setState({[e.target.name]: e.target.value});
     }
 
-    loginUser = (e) => {
-        e.preventDefault();
-        const { loginEmail, loginPassword } = this.state;
-        const user = { email: loginEmail, password: loginPassword};
-        this.logUserIn(user);
-        this.setState({ loginEmail: '', loginPassword: ''})
+    loginUser = async e => {
+      e.preventDefault();
+      const { loginEmail, loginPassword } = this.state;
+      const user = { email: loginEmail, password: loginPassword};
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+      };
+      
+      try {
+        const response = await fetch('http://localhost:3001/api/v1/login', options);
+        this.setState({ status: response.status });
+      } catch(error) {
+        throw new Error(error.message)
+      }
     }
     
     render() {
+      if (this.state.status === 200) {
+        return <Redirect to='/' />
+      }
+
         return(
             <div>
                 <section className="login">
