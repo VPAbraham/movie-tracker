@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { loginUser } from '../../apiCalls'
+import './LoginForm.scss'
 
 class LoginForm extends Component {
     constructor() {
@@ -37,11 +38,11 @@ class LoginForm extends Component {
         return(
             <div>
                 <section className="login">
-                    <h3>LOG IN</h3>
+                    {/* <h3>LOG IN</h3> */}
                     <form>
-                       <input type="email" placeholder="insert login e-mail" name="loginEmail" value={this.state.loginEmail} onChange={this.handleChange} />
-                        <input type="text" placeholder="insert login password" name="loginPassword" value={this.state.loginPassword} onChange={this.handleChange} />
-                        <button onClick={(e) => this.loginUser(e)}>LOG IN</button>
+                       <input className="login-input" type="email" placeholder="insert login e-mail" name="loginEmail" value={this.state.loginEmail} onChange={this.handleChange} />
+                        <input className="login-input"  type="password" placeholder="insert login password" name="loginPassword" value={this.state.loginPassword} onChange={this.handleChange} />
+                        <a className="a-login-button"><button className="login-button" onClick={(e) => this.loginUser(e)}>LOG IN</button></a>
                     </form>
                 </section>
             </div>
