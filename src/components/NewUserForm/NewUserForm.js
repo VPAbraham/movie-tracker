@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 
+
 class NewUserForm extends Component {
   constructor() {
     super()
@@ -40,19 +41,21 @@ class NewUserForm extends Component {
     if (this.state.status === 201) {
       return <Redirect to='/login' />
     }
+        
     return(
-      <div>
+      <div className="new-user-container">
+        {/* <h3>CREATE ACCOUNT</h3> */}
         <section className="create-account">
-          <h3>CREATE ACCOUNT</h3>
           <form>
-            <input type="text" placeholder="insert your name" name="newName" value={this.state.newName} onChange={this.handleChange} />
+            <input className="name-input" type="text" placeholder="insert your name" name="newName" value={this.state.newName} onChange={this.handleChange} />
             <input type="email" placeholder="insert your e-mail" name="newEmail" value={this.state.newEmail} onChange={this.handleChange} />
             <input type="password" placeholder="insert your password" name="newPassword" value={this.state.newPassword} onChange={this.handleChange} />
-            <button className="create-user-button" onClick={(e) => this.submitNewUserInfo(e)}>SUBMIT</button>
+            <a className="a-create-button"><button className="create-user-button" onClick={(e) => this.submitNewUserInfo(e)}>SUBMIT</button></a>
           </form>
         </section>
       </div>
     )
   }
 }
+
 export default NewUserForm;
