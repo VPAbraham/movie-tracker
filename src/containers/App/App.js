@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import './App.scss';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import NavBar from '../../components/NavBar/NavBar';
-import { saveMovies } from '../../actions';
+import { saveMovies, saveUser, saveFavorites } from '../../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchMovies } from '../../apiCalls.js';
@@ -12,11 +12,10 @@ import { createNewUser, loginUser } from '../../apiCalls'
 
 class App extends Component {
   async componentDidMount() {
-    const { movies } = this.props; 
-    console.log(movies)
+    const { saveMovies, saveUser, saveFavorites } = this.props; 
     try {
       const movieData = await fetchMovies();
-      await this.props.saveMovies(movieData)
+      await saveMovies(movieData)
     }
 
     catch {
@@ -45,19 +44,25 @@ class App extends Component {
         <NavBar />
         <Route exact path='/' render={() => <MoviesContainer /> } />
         <Route exact path='/login' render={() => <LoginForm addNewUser={this.addNewUser} logUserIn={this.logUserIn} />} />
+        <Route exact path='/favorites' render={() => <MoviesContainer movies={this.props.favorites}/> } />
       </div>
     )
   }
 }
 
+const mapStateToProps = ({ movies, user, favorites }) => ({
+  movies,
+  user,
+  favorites
+})
+
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
     saveMovies,
+    saveUser,
+    saveFavorites
   }, dispatch)
 )
 
-const mapStateToProps = ({ movies }) => ({
-  movies,
-})
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
