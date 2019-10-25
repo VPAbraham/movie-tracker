@@ -15,7 +15,6 @@ export const createNewUser = async (newUserInfo) => {
     },
     body: JSON.stringify(newUserInfo)
   };
-  
   try {
     const response = await fetch('http://localhost:3001/api/v1/users', options);
       if(!response.ok) {
