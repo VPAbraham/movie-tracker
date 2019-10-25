@@ -18,8 +18,8 @@ class NewUserForm extends Component {
     this.setState({[e.target.name]: e.target.value});
   }
 
-  submitNewUserInfo = async event => {
-    event.preventDefault();
+  submitNewUserInfo = async e => {
+    e.preventDefault();
     const { newName, newEmail, newPassword } = this.state;
     const newUser = {name: newName, email: newEmail, password: newPassword};
     const options = {
