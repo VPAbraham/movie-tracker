@@ -1,52 +1,61 @@
 import React, { Component } from 'react';
-import { createNewUser } from '../../apiCalls'
-import './NewUserForm.scss';
+import { Redirect } from 'react-router-dom'
+
 
 class NewUserForm extends Component {
-    constructor() {
-        super()
-        this.state = {
-            newName: '',
-            newEmail: '',
-            newPassword: '',
-            error: ''
-        }
+  constructor() {
+    super()
+    this.state = {
+      newName: '',
+      newEmail: '',
+      newPassword: '',
+      status: null
     }
-    
-    addNewUser = async (newUserInfo) => {
-      try {
-        await createNewUser(newUserInfo);
-      } catch({ message }) {
-        this.setState({error: message})
-      }
-    }
+  }
 
-    submitNewUserInfo = event => {
-        event.preventDefault()
-        const { newName, newEmail, newPassword } = this.state
-        const newUser = {name: newName, email: newEmail, password: newPassword}
-        this.addNewUser(newUser);
-        this.setState({newName: '', newEmail: '', newPassword: ''})
-    }
+  handleChange = (e) => {
+    this.setState({[e.target.name]: e.target.value});
+  }
 
-    handleChange = (e) => {
-        this.setState({[e.target.name]: e.target.value});
+  submitNewUserInfo = async event => {
+    event.preventDefault();
+    const { newName, newEmail, newPassword } = this.state;
+    const newUser = {name: newName, email: newEmail, password: newPassword};
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newUser)
+    };
+
+    try {
+      const response = await fetch('http://localhost:3001/api/v1/users', options);
+      this.setState({ status: response.status });
+    } catch(error) {
+      throw new Error(error)
     }
-    
-    render() {
-        return(
-            <div className="new-user-container">
-                    {/* <h3>CREATE ACCOUNT</h3> */}
-                <section className="create-account">
-                    <form>
-                        <input className="name-input" type="text" placeholder="insert your name" name="newName" value={this.state.newName} onChange={this.handleChange} />
-                        <input type="email" placeholder="insert your e-mail" name="newEmail" value={this.state.newEmail} onChange={this.handleChange} />
-                        <input type="password" placeholder="insert your password" name="newPassword" value={this.state.newPassword} onChange={this.handleChange} />
-                        <a className="a-create-button"><button className="create-user-button" onClick={(e) => this.submitNewUserInfo(e)}>SUBMIT</button></a>
-                    </form>
-                </section>
-            </div>
-        )
+  }
+  
+  render() {
+    if (this.state.status === 201) {
+      return <Redirect to='/login' />
     }
+        
+    return(
+      <div className="new-user-container">
+        {/* <h3>CREATE ACCOUNT</h3> */}
+        <section className="create-account">
+          <form>
+            <input className="name-input" type="text" placeholder="insert your name" name="newName" value={this.state.newName} onChange={this.handleChange} />
+            <input type="email" placeholder="insert your e-mail" name="newEmail" value={this.state.newEmail} onChange={this.handleChange} />
+            <input type="password" placeholder="insert your password" name="newPassword" value={this.state.newPassword} onChange={this.handleChange} />
+            <a className="a-create-button"><button className="create-user-button" onClick={(e) => this.submitNewUserInfo(e)}>SUBMIT</button></a>
+          </form>
+        </section>
+      </div>
+    )
+  }
 }
+
 export default NewUserForm;
