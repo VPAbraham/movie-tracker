@@ -22,7 +22,6 @@ export const createNewUser = async (newUserInfo) => {
         throw new Error("Sorry. Unable to create new user");
       }
       const user = await response.json();
-      console.log('USER FROM API CALLS', user)
       return user;
   } catch(error) {
     throw new Error(error.message)
