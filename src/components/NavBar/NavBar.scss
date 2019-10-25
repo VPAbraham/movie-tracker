@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Cabin&display=swap');
 
 .nav-bar {
-  background-color: rgb(20, 19, 19);
+  background-color: black;
   color: lightgray;
   height: 12vh;
   font-size: 2em;
@@ -12,19 +12,51 @@
 .main-logo {
   font-family: 'Josefin Slab', serif;
   float: left;
-  display: inline-block;
+  // display: inline-block;
 
-  .logo-second {
-    font-family: 'Cabin', sans-serif;
-  }
+  // .logo-second {
+  //   font-family: 'Cabin', sans-serif;
+  // }
 }
 
 .menu {
   display: flex;
   float: right;
-  font-size: .7em;
+  font-size: .8em;
 
   .menu-item {
     margin: 0 13px;
+    margin-top: 28px;
+    font-family: 'Josefin Slab', serif;
+    color: lightgray;
+    font-weight: bold;
   }
+}
+
+.hidden-letters {
+  display: inline;
+}
+.hidden-letters:after {
+  width: 0px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  transition: .4s linear;
+}
+.hidden-letters:nth-child(1):after {
+  content: 'ovie ';
+}
+.hidden-letters:nth-child(2):after {
+  content: 'racker ';
+}
+.hidden-div:hover .hidden-letters:nth-child(1):after {
+  width: 90px;
+}
+.hidden-div:hover .hidden-letters:nth-child(2):after {
+  width: 130px;
+}
+
+.hidden-div {
+  margin-top: 28px;
+  margin-left: 15px;
 }
