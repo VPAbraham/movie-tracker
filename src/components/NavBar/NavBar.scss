@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Slab&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Cabin&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700|Nanum+Myeongjo:400,700&display=swap');
+
+// font-family: 'Montserrat', sans-serif;
+// font-family: 'Nanum Gothic', sans-serif;
+// font-family: 'Nanum Myeongjo', serif;
+// font-family: 'Liu Jian Mao Cao', cursive;
 
 .nav-bar {
   background-color: black;
@@ -10,7 +17,13 @@
 }
 
 .main-logo {
-  font-family: 'Josefin Slab', serif;
+  // font-family: 'Josefin Slab', serif;
+  font-family: 'Nanum Myeongjo', serif; //not bad
+  // font-family: 'Nanum Gothic', sans-serif;
+  // font-family: 'Montserrat', sans-serif;
+
+
+
   float: left;
   // display: inline-block;
 
@@ -27,7 +40,12 @@
   .menu-item {
     margin: 0 13px;
     margin-top: 28px;
-    font-family: 'Josefin Slab', serif;
+    // font-family: 'Josefin Slab', serif;
+    font-family: 'Nanum Myeongjo', serif;
+    // font-family: 'Nanum Gothic', sans-serif; //too plain????
+    // font-family: 'Montserrat', sans-serif;
+
+
     color: lightgray;
     font-weight: bold;
     text-decoration: none;
@@ -37,6 +55,7 @@
 .hidden-letters {
   display: inline;
 }
+
 .hidden-letters:after {
   width: 0px;
   overflow: hidden;
