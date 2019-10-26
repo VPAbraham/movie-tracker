@@ -1,7 +1,7 @@
 export const user = (state={}, action) => {
   switch (action.type) {
-    case 'SET_USER':
-      return action.user;
+    case 'SAVE_USER':
+      return {name: action.name, email: action.email, password: action.password, id: action.id};
 
       default:
         return state;
