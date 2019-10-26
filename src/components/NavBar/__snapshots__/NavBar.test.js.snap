@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar should match a snapshot 1`] = `
+<nav
+  className="nav-bar"
+>
+  <h1
+    className="main-logo"
+  >
+    <div
+      className="hidden-div"
+    >
+      <span
+        className="hidden-letters"
+      >
+        M
+      </span>
+      <span
+        className="hidden-letters"
+      >
+        T
+      </span>
+    </div>
+  </h1>
+  <div
+    className="menu"
+  >
+    <Link
+      className="menu-item"
+      to="/login"
+    >
+      Login
+    </Link>
+    <Link
+      className="menu-item"
+      to="/new-user"
+    >
+      Create New Account
+    </Link>
+    <Link
+      className="menu-item"
+      to="/favorites"
+    >
+      Favorite Movies
+    </Link>
+    <Link
+      className="menu-item"
+      to="/"
+    >
+      Sign Out
+    </Link>
+  </div>
+</nav>
+`;

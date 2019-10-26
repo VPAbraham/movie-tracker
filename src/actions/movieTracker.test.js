@@ -45,17 +45,19 @@ describe('actions', () => {
             const email = 'default@gmail.com';
             const password = 'password';
             const id = 4;
+            const loggedIn = false;
 
             const expectedAction = {
                 type: 'SAVE_USER',
                 name: 'Ronald',
                 email: 'default@gmail.com',
                 password: 'password',
-                id: 4
+                id: 4,
+                loggedIn: false
             };
 
             //Execution
-            const result = actions.saveUser(name, email, password, id);
+            const result = actions.saveUser(name, email, password, id, loggedIn);
 
             //Expectation
             expect(result).toEqual(expectedAction)
@@ -80,16 +82,16 @@ describe('actions', () => {
         });
     });
 
-    describe('LOG_IN_USER', () => {
-        it('should have a type of LOG_IN_USER', () => {
+    describe('TOGGLE_LOGIN', () => {
+        it('should have a type of TOGGLE_LOGIN', () => {
             //Setup
-            const loginStatus = true;
+            const id = 5;
             const expectedAction = {
-                type: 'LOG_IN_USER',
-                loginStatus: true
+                type: 'TOGGLE_LOGIN',
+                id
             }
             //Execution
-            const result = actions.logInUser(loginStatus);
+            const result = actions.toggleLogin(id);
 
             //Expectation
 
