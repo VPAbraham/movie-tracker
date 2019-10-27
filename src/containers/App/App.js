@@ -10,7 +10,7 @@ import NewUserForm from '../../components/NewUserForm/NewUserForm';
 import { saveMovies, saveUser, saveFavorites } from '../../actions';
 import { fetchMovies } from '../../apiCalls.js';
 
-class App extends Component {
+export class App extends Component {
   async componentDidMount() {
     const { saveMovies, saveUser, saveFavorites } = this.props; 
     try {
