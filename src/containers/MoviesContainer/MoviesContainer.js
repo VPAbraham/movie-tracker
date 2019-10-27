@@ -5,8 +5,7 @@ import images from '../../assets/images';
 import '../MoviesContainer/MoviesContainer.scss'
 import { connect } from 'react-redux'
 
-const MoviesContainer = ({ movies }) => {
-  console.log(movies)
+export const MoviesContainer = ({ movies }) => {
   const movieCards = movies.map(movie => {
       return (
         <Card 

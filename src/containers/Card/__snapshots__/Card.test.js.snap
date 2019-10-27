@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card should match the snapshot with with all data passed in 1`] = `
+<div
+  className="card"
+>
+  <img
+    alt="movie poster"
+    className="card-img"
+    src="https://image.tmdb.org/t/p/w342$"
+  />
+  <h3>
+    Batman
+  </h3>
+  <h5
+    className="faved"
+  >
+    Insert fave icon here
+  </h5>
+</div>
+`;
