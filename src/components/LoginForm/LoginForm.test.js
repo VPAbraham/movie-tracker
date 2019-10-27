@@ -1,18 +1,50 @@
 import LoginForm from './LoginForm';
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+import { MemoryRouter } from 'react-router';
+import { Redirect } from 'react-router-dom'
+
+
 
 describe('LoginForm', () => {
   let wrapper;
-  beforeEach(() => {
-    const wrapper = shallow(
-      <LoginForm 
-      
-      />
-    )
-  })
 
+  beforeEach(() => {
+    wrapper = shallow(
+      <LoginForm 
+      />)
+  })
+  
   it('should match the snapshot with all data passed in', () => {
+
     expect(wrapper).toMatchSnapshot()
+  });
+  it('should call loginUser when button is clicked', () => {
+
+    wrapper.instance().loginUser = jest.fn()
+    const mockEvent = { preventDefault: jest.fn()}
+
+    wrapper.instance().forceUpdate();
+
+    wrapper.find('button').simulate('click', mockEvent)
+
+    expect(wrapper.instance().loginUser).toHaveBeenCalled()
+
+  });
+  it('should update state when handleChange is invoked', () => {
+    const mockEvent = {target: {name: 'name', value: 'Victor'}}
+    const expected = 'Victor'
+
+    wrapper.instance().handleChange(mockEvent);
+    expect(wrapper.state('name')).toEqual(expected)
+  });
+  it('should redirect to home if the user is successfully logged in', () => {
+    let wrapper = mount(
+      <MemoryRouter initialEntries={['/login']}>
+        <Redirect to={'/'}/>
+      </MemoryRouter>
+    )
+
+    expect(wrapper.find(Redirect)).toHaveLength(1)
   })
 })
