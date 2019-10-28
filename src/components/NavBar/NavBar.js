@@ -29,11 +29,14 @@ const NavBar = ({ isLoggedIn, setCurrentUser, logOut }) => {
 
   return (
     <nav className="nav-bar">
-    <h1 className="main-logo"><div className="hidden-div"><span className="hidden-letters">M</span><span className="hidden-letters">T</span></div></h1>
+      <Link to='/'>
+        <h1 className="main-logo"><div className="hidden-div"><span className="hidden-letters">M</span><span className="hidden-letters">T</span></div></h1>
+      </Link>
       {buttons}     
     </nav>
   )
 }
+
 
 const mapStateToProps = ({ isLoggedIn }) => ({
   isLoggedIn
