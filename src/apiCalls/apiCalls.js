@@ -18,3 +18,15 @@ export const postNewUser = async (newUser) => {
   return await fetch('http://localhost:3001/api/v1/users', options);
 }
 
+
+export const loginUser = async (userInfo) => {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userInfo)
+  };
+  
+  return await fetch('http://localhost:3001/api/v1/login', options);
+}

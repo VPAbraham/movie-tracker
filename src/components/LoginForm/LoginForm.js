@@ -4,6 +4,7 @@ import './LoginForm.scss';
 import { logIn, setCurrentUser } from '../../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { loginUser } from '../../apiCalls/apiCalls';
 
 
 class LoginForm extends Component {
@@ -30,16 +31,9 @@ class LoginForm extends Component {
     const { logIn, setCurrentUser } = this.props;
     const { loginEmail, loginPassword } = this.state;
     const user = { email: loginEmail, password: loginPassword };
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(user)
-    };
-
+   
     try {
-      const response = await fetch('http://localhost:3001/api/v1/login', options);
+      const response = await loginUser(user)
       this.setState({ status: response.status });
       if (this.state.status === 200) {
         setCurrentUser(loginEmail, loginPassword);
