@@ -4,8 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import './NewUserForm.scss'
 import { saveUser } from '../../actions'
-
-
+import { postNewUser } from '../../apiCalls/apiCalls';
 
 class NewUserForm extends Component {
   constructor() {
@@ -25,26 +24,21 @@ class NewUserForm extends Component {
 
   clearNewUserInputs = () => {
     this.setState({newName: '', newEmail: '', newPassword: ''})
-}
+  }
 
   submitNewUserInfo = async e => {
     e.preventDefault();
     const { newName, newEmail, newPassword } = this.state;
     const { saveUser } = this.props;
     const newUser = {name: newName, email: newEmail, password: newPassword};
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newUser)
-    };
-    console.log('NEWUSER', newUser)
+
     try {
-      const response = await fetch('http://localhost:3001/api/v1/users', options);
+      const response = await postNewUser(newUser);
       this.setState({ status: response.status });
-      await console.log(this.state)
-      await saveUser(this.state.newName, this.state.newEmail, this.state.newPassword)      
+      if(response.status === 201){
+      await console.log(newName)
+      await saveUser(newName, newEmail, newPassword)
+      }      
     } catch(error) {
       throw new Error(error)
     }
@@ -57,9 +51,6 @@ class NewUserForm extends Component {
     } else if(this.state.status === 500) {
       this.state.createEmailError = "* this email already exists *" 
     }
-
- 
-
  
     return(
       <div className="new-user-container">
