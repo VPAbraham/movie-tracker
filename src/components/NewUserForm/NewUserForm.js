@@ -43,8 +43,10 @@ class NewUserForm extends Component {
     try {
       const response = await fetch('http://localhost:3001/api/v1/users', options);
       this.setState({ status: response.status });
-      await console.log(this.state)
-      await saveUser(this.state.newName, this.state.newEmail, this.state.newPassword)      
+      if(response.status === 201){
+      await console.log(newName)
+      await saveUser(newName, newEmail, newPassword)
+      }      
     } catch(error) {
       throw new Error(error)
     }
