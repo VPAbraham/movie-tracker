@@ -38,6 +38,7 @@ class LoginForm extends Component {
         body: JSON.stringify(user)
       };
       
+      
       console.log('USER IN LOGINFORM', user)
       try {
         const response = await fetch('http://localhost:3001/api/v1/login', options);
@@ -50,7 +51,7 @@ class LoginForm extends Component {
         throw new Error(error.message)
       }
       this.clearLoginInputs();
-      
+
     }
     
     render() {

@@ -7,6 +7,7 @@ export const fetchMovies = async () => {
   return data.results
 }
 
+
 export const postNewUser = async (newUser) => {
   const options = {
     method: 'POST',
