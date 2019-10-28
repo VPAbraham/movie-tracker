@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import './App.scss';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
+import FavoritesContainer from '../FavoritesContainer/FavoritesContainer';
+
 import NavBar from '../../components/NavBar/NavBar';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import NewUserForm from '../../components/NewUserForm/NewUserForm';
@@ -25,7 +27,7 @@ export class App extends Component {
       <div className="App">
         <NavBar />
         <Route exact path='/' render={() => <MoviesContainer /> } />
-        <Route exact path='/favorites' render={() => <MoviesContainer movies={this.props.favorites}/> } />
+        <Route exact path='/favorites' render={() => <FavoritesContainer /> } />
         <Route exact path='/login' render={() => <LoginForm />} />
         <Route exact path='/new-user' render={() => <NewUserForm />} />
       </div>
