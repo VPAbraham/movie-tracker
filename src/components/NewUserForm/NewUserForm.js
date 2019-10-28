@@ -35,8 +35,7 @@ class NewUserForm extends Component {
     try {
       const response = await postNewUser(newUser);
       this.setState({ status: response.status });
-      if(response.status === 201){
-      await console.log(newName)
+      if (response.status === 201) {
       await saveUser(newName, newEmail, newPassword)
       }      
     } catch(error) {
@@ -56,10 +55,10 @@ class NewUserForm extends Component {
       <div className="new-user-container">
         <section className="create-account">
           <form>
-            <input className="new-user-input" type="text" placeholder="insert your name" name="newName" value={this.state.newName} onChange={this.handleChange} />
-            <input className="email-error" className="new-user-input" type="email" placeholder="insert your e-mail" name="newEmail" value={this.state.newEmail} onChange={this.handleChange} />
+            <input className="new-user-input" type="text" placeholder="insert your name" name="newName" value={this.state.newName || ''} onChange={this.handleChange} />
+            <input className="email-error" className="new-user-input" type="email" placeholder="insert your e-mail" name="newEmail" value={this.state.newEmail || ''} onChange={this.handleChange} />
             <h4 style={{color: "red"}}>{this.state.createEmailError}</h4>
-            <input className="new-user-input" type="password" placeholder="insert your password" name="newPassword" value={this.state.newPassword} onChange={this.handleChange} />
+            <input className="new-user-input" type="password" placeholder="insert your password" name="newPassword" value={this.state.newPassword || ''} onChange={this.handleChange} />
             <a className="a-create-button"><button className="create-user-button" onClick={(e) => this.submitNewUserInfo(e)}>SUBMIT</button></a>
           </form>
         </section>
