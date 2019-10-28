@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { loginUser } from '../../apiCalls/apiCalls';
 
-
 class LoginForm extends Component {
   constructor() {
     super()

@@ -27,6 +27,7 @@ export const loginUser = async (userInfo) => {
     },
     body: JSON.stringify(userInfo)
   };
+
   
   return await fetch('http://localhost:3001/api/v1/login', options);
 }

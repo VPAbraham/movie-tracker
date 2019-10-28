@@ -37,6 +37,7 @@ const NavBar = ({ isLoggedIn, setCurrentUser, logOut }) => {
   )
 }
 
+
 const mapStateToProps = ({ isLoggedIn }) => ({
   isLoggedIn
 })
