@@ -50,6 +50,7 @@ class LoginForm extends Component {
         throw new Error(error.message)
       }
       this.clearLoginInputs();
+      
     }
     
     render() {
