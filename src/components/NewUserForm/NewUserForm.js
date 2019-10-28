@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import './NewUserForm.scss'
 import { saveUser } from '../../actions'
+import { postNewUser } from '../../apiCalls/apiCalls';
 
 
 
@@ -27,16 +28,9 @@ class NewUserForm extends Component {
     const { newName, newEmail, newPassword } = this.state;
     const { saveUser } = this.props;
     const newUser = {name: newName, email: newEmail, password: newPassword};
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newUser)
-    };
 
     try {
-      const response = await fetch('http://localhost:3001/api/v1/users', options);
+      const response = await postNewUser(newUser);
       this.setState({ status: response.status });
       if(response.status === 201){
       await console.log(newName)
