@@ -4,13 +4,10 @@ export const saveMovies = (movies) => ({
   movies
 })
 
-export const saveUser = (name, email, password) => ({
+export const saveUser = (email, password) => ({
   type: "SAVE_USER",
-  name,
   email,
-  password,
-  id: 1,
-  loggedIn: false
+  password
 })
 
 export const saveFavorites = (id) => ({

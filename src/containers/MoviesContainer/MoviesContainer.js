@@ -31,4 +31,4 @@ const mapStateToProps = ({ movies }) => ({
   movies
 })
 
-export default connect(mapStateToProps, null)(MoviesContainer)
+export default connect(mapStateToProps)(MoviesContainer)
