@@ -3,16 +3,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { logOut } from '../../actions';
+import { saveUser, logOut } from '../../actions';
 
 
-const NavBar = ({ isLoggedIn, logOut }) => {
+const NavBar = ({ isLoggedIn, saveUser, logOut }) => {
+  const signOut = () => {
+    saveUser("", "");
+    logOut();
+  }
+  
   let buttons;
   if (isLoggedIn) {
     buttons = 
     <div className="menu">
       <Link to='/favorites' className="menu-item">Favorite Movies</Link>
-      <Link to='/' className="menu-item" onClick={logOut}>Sign Out</Link>
+      <Link to='/' className="menu-item" onClick={signOut}>Sign Out</Link>
     </div>    
   } else {
     buttons =       
@@ -36,6 +41,7 @@ const mapStateToProps = ({ isLoggedIn }) => ({
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
+    saveUser,
     logOut
   }, dispatch)
 )
