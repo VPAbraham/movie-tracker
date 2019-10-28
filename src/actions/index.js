@@ -20,6 +20,11 @@ export const saveFavorites = (id) => ({
   id
 })
 
+export const removeFromFavorites = (id) => ({
+  type: "REMOVE_FROM_FAVORITES",
+  id
+})
+
 export const logIn = () => ({
   type: "LOGIN",
   loggedIn: true

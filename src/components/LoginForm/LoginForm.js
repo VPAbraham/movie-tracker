@@ -35,11 +35,11 @@ class LoginForm extends Component {
       let currentUser = await loginUser(user);
       setCurrentUser(currentUser);
       logIn();
-      this.setState({status: 200})
+      this.setState({status: 200, loginPasswordError: ""})
     } catch (error) {
       this.setState({status: 401, loginPasswordError: "* the password does not match! *"})
     }
-    
+
     this.clearLoginInputs();
   }
 

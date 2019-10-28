@@ -36,3 +36,36 @@ export const loginUser = async (userInfo) => {
   
   return response.json();
 }
+
+export const postFavorite = async (userId, movie) => {
+  let url = `http://localhost:3001/api/v1/users/${userId}/moviefavorites`;
+  let options = {
+    method: 'POST',
+    body: JSON.stringify(movie),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  let response = await fetch(url, options);
+
+  if (!response.ok) {
+    throw Error('Could not add movie to favorites.')
+  }
+}
+
+export const deleteFavorite = async (userId, movieId) => {
+  let url = `http://localhost:3001/api/v1/users/${userId}/moviefavorites/${movieId}`
+  let options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  let response = await fetch(url, options);
+
+  if (!response.ok) {
+      throw Error('Could not delete movie from favorites.')
+  }
+}
