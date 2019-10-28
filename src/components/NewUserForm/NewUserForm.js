@@ -6,8 +6,6 @@ import './NewUserForm.scss'
 import { saveUser } from '../../actions'
 import { postNewUser } from '../../apiCalls/apiCalls';
 
-
-
 class NewUserForm extends Component {
   constructor() {
     super()
@@ -26,18 +24,18 @@ class NewUserForm extends Component {
 
   clearNewUserInputs = () => {
     this.setState({newName: '', newEmail: '', newPassword: ''})
-}
+  }
 
   submitNewUserInfo = async e => {
     e.preventDefault();
     const { newName, newEmail, newPassword } = this.state;
     const { saveUser } = this.props;
     const newUser = {name: newName, email: newEmail, password: newPassword};
+
     try {
       const response = await postNewUser(newUser);
       this.setState({ status: response.status });
-      if(response.status === 201){
-      await console.error('Victor is super cool and very handsome')
+      if (response.status === 201) {
       await saveUser(newName, newEmail, newPassword)
       }      
     } catch(error) {
@@ -52,9 +50,6 @@ class NewUserForm extends Component {
     } else if(this.state.status === 500) {
       this.state.createEmailError = "* this email already exists *" 
     }
-
- 
-
  
     return(
       <div className="new-user-container">
