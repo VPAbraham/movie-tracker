@@ -16,6 +16,10 @@ class LoginForm extends Component {
       this.setState({[e.target.name]: e.target.value});
     }
 
+    clearLoginInputs = () => {
+        this.setState({loginEmail: '', loginPassWord: ''})
+    }
+
     loginUser = async e => {
       e.preventDefault();
       const { loginEmail, loginPassword } = this.state;
@@ -35,6 +39,7 @@ class LoginForm extends Component {
       } catch(error) {
         throw new Error(error.message)
       }
+      this.clearLoginInputs();
     }
     
     render() {

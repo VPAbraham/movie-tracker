@@ -23,6 +23,10 @@ class NewUserForm extends Component {
     this.setState({[e.target.name]: e.target.value});
   }
 
+  clearNewUserInputs = () => {
+    this.setState({newName: '', newEmail: '', newPassword: ''})
+}
+
   submitNewUserInfo = async e => {
     e.preventDefault();
     const { newName, newEmail, newPassword } = this.state;
@@ -44,6 +48,7 @@ class NewUserForm extends Component {
     } catch(error) {
       throw new Error(error)
     }
+    this.clearNewUserInputs()
   }
   
   render() {
