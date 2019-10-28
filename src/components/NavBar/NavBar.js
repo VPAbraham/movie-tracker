@@ -3,12 +3,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { saveUser, logOut } from '../../actions';
+import { setCurrentUser, logOut } from '../../actions';
 
 
-const NavBar = ({ isLoggedIn, saveUser, logOut }) => {
+const NavBar = ({ isLoggedIn, setCurrentUser, logOut }) => {
   const signOut = () => {
-    saveUser("", "");
+    setCurrentUser("", "");
     logOut();
   }
   
@@ -41,7 +41,7 @@ const mapStateToProps = ({ isLoggedIn }) => ({
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    saveUser,
+    setCurrentUser,
     logOut
   }, dispatch)
 )
