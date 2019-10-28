@@ -11,7 +11,8 @@ class NewUserForm extends Component {
       newName: '',
       newEmail: '',
       newPassword: '',
-      status: null
+      status: null,
+      createEmailError: ''
     }
   }
 
@@ -30,7 +31,7 @@ class NewUserForm extends Component {
       },
       body: JSON.stringify(newUser)
     };
-
+    console.log('NEWUSER', newUser)
     try {
       const response = await fetch('http://localhost:3001/api/v1/users', options);
       this.setState({ status: response.status });
@@ -42,15 +43,20 @@ class NewUserForm extends Component {
   render() {
     if (this.state.status === 201) {
       return <Redirect to='/login' />
+    } else if(this.state.status === 500) {
+      this.state.createEmailError = "* this email already exists *" 
     }
-        
+
+ 
+
+ 
     return(
       <div className="new-user-container">
-        {/* <h3>CREATE ACCOUNT</h3> */}
         <section className="create-account">
           <form>
             <input className="new-user-input" type="text" placeholder="insert your name" name="newName" value={this.state.newName} onChange={this.handleChange} />
-            <input className="new-user-input" type="email" placeholder="insert your e-mail" name="newEmail" value={this.state.newEmail} onChange={this.handleChange} />
+            <input className="email-error" className="new-user-input" type="email" placeholder="insert your e-mail" name="newEmail" value={this.state.newEmail} onChange={this.handleChange} />
+            <h4 style={{color: "red"}}>{this.state.createEmailError}</h4>
             <input className="new-user-input" type="password" placeholder="insert your password" name="newPassword" value={this.state.newPassword} onChange={this.handleChange} />
             <a className="a-create-button"><button className="create-user-button" onClick={(e) => this.submitNewUserInfo(e)}>SUBMIT</button></a>
           </form>
