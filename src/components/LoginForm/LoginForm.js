@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import './LoginForm.scss';
-import { toggleLogin } from '../../actions';
+import { logIn, saveUser } from '../../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -27,7 +27,7 @@ class LoginForm extends Component {
 
   loginUser = async e => {
     e.preventDefault();
-    const { toggleLogin } = this.props;
+    const { logIn, saveUser } = this.props;
     const { loginEmail, loginPassword } = this.state;
     const user = { email: loginEmail, password: loginPassword };
     const options = {
@@ -38,14 +38,12 @@ class LoginForm extends Component {
       body: JSON.stringify(user)
     };
 
-
-    console.log('USER IN LOGINFORM', user)
     try {
       const response = await fetch('http://localhost:3001/api/v1/login', options);
       this.setState({ status: response.status });
-      console.log(this.state.status)
       if (this.state.status === 200) {
-        toggleLogin(1)
+        saveUser(loginEmail, loginPassword);
+        logIn();
       }
     } catch (error) {
       throw new Error(error.message)
@@ -58,7 +56,7 @@ class LoginForm extends Component {
     if (this.state.status === 200) {
       return <Redirect to='/' />
     } else if (this.state.status === 401) {
-      this.state.loginPasswordError = "* the password does not match! *"
+      this.setState({ loginPasswordError: "* the password does not match! *" })
     }
 
     return (
@@ -68,7 +66,7 @@ class LoginForm extends Component {
             <input className="login-input" type="email" placeholder="insert login e-mail" name="loginEmail" value={this.state.loginEmail} onChange={this.handleChange} />
             <input className="login-input" type="password" placeholder="insert login password" name="loginPassword" value={this.state.loginPassword} onChange={this.handleChange} />
             <h4 style={{ color: "red" }}>{this.state.loginPasswordError}</h4>
-            <a className="a-login-button"><button className="login-button" onClick={(e) => this.loginUser(e)}>LOG IN</button></a>
+            <button className="login-button a-login-button" onClick={(e) => this.loginUser(e)}>LOG IN</button>
           </form>
         </section>
       </div>
@@ -82,7 +80,8 @@ const mapStateToProps = ({ user }) => ({
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    toggleLogin
+    logIn,
+    saveUser
   }, dispatch)
 )
 
