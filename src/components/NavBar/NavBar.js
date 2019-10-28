@@ -1,15 +1,18 @@
 import './NavBar.scss';
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { logOut } from '../../actions';
 
-const NavBar = ({ isLoggedIn }) => {
+
+const NavBar = ({ isLoggedIn, logOut }) => {
   let buttons;
   if (isLoggedIn) {
     buttons = 
     <div className="menu">
       <Link to='/favorites' className="menu-item">Favorite Movies</Link>
-      <Link to='/' className="menu-item">Sign Out</Link>
+      <Link to='/' className="menu-item" onClick={logOut}>Sign Out</Link>
     </div>    
   } else {
     buttons =       
@@ -31,4 +34,10 @@ const mapStateToProps = ({ isLoggedIn }) => ({
   isLoggedIn
 })
 
-export default connect(mapStateToProps)(NavBar)
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    logOut
+  }, dispatch)
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
