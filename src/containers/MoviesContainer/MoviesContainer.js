@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from '../Card/Card';
-import PropTypes from 'prop-types';
 import images from '../../assets/images';
 import '../MoviesContainer/MoviesContainer.scss'
 import { connect } from 'react-redux'

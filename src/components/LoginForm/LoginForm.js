@@ -38,8 +38,6 @@ class LoginForm extends Component {
       body: JSON.stringify(user)
     };
 
-
-    console.log('USER IN LOGINFORM', user)
     try {
       const response = await fetch('http://localhost:3001/api/v1/login', options);
       this.setState({ status: response.status });
@@ -58,7 +56,7 @@ class LoginForm extends Component {
     if (this.state.status === 200) {
       return <Redirect to='/' />
     } else if (this.state.status === 401) {
-      this.state.loginPasswordError = "* the password does not match! *"
+      this.setState({ loginPasswordError: "* the password does not match! *" })
     }
 
     return (
@@ -68,7 +66,7 @@ class LoginForm extends Component {
             <input className="login-input" type="email" placeholder="insert login e-mail" name="loginEmail" value={this.state.loginEmail} onChange={this.handleChange} />
             <input className="login-input" type="password" placeholder="insert login password" name="loginPassword" value={this.state.loginPassword} onChange={this.handleChange} />
             <h4 style={{ color: "red" }}>{this.state.loginPasswordError}</h4>
-            <a className="a-login-button"><button className="login-button" onClick={(e) => this.loginUser(e)}>LOG IN</button></a>
+            <button className="login-button a-login-button" onClick={(e) => this.loginUser(e)}>LOG IN</button>
           </form>
         </section>
       </div>

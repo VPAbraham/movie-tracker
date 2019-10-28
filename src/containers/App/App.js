@@ -12,7 +12,7 @@ import { fetchMovies } from '../../apiCalls/apiCalls';
 
 export class App extends Component {
   async componentDidMount() {
-    const { saveMovies, saveUser, saveFavorites } = this.props; 
+    const { saveMovies } = this.props; 
     try {
       const movieData = await fetchMovies();
       await saveMovies(movieData)
