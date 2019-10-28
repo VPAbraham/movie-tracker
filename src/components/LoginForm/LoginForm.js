@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import './LoginForm.scss';
-import { logIn, saveUser } from '../../actions';
+import { logIn, setCurrentUser } from '../../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -27,7 +27,7 @@ class LoginForm extends Component {
 
   loginUser = async e => {
     e.preventDefault();
-    const { logIn, saveUser } = this.props;
+    const { logIn, setCurrentUser } = this.props;
     const { loginEmail, loginPassword } = this.state;
     const user = { email: loginEmail, password: loginPassword };
     const options = {
@@ -42,7 +42,7 @@ class LoginForm extends Component {
       const response = await fetch('http://localhost:3001/api/v1/login', options);
       this.setState({ status: response.status });
       if (this.state.status === 200) {
-        saveUser(loginEmail, loginPassword);
+        setCurrentUser(loginEmail, loginPassword);
         logIn();
       }
     } catch (error) {
@@ -81,7 +81,7 @@ const mapStateToProps = ({ user }) => ({
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
     logIn,
-    saveUser
+    setCurrentUser
   }, dispatch)
 )
 

@@ -1,13 +1,15 @@
 import { combineReducers } from 'redux';
 import { movies } from './movies';
-import { user } from './user';
+import { users } from './users';
+import { currentUser } from './currentUser';
 import { favorites } from './favorites';
 import { isLoggedIn } from './isLoggedIn';
 
 
 export const rootReducer = combineReducers({
   movies,
-  user,
+  users,
+  currentUser,
   favorites,
   isLoggedIn
 });

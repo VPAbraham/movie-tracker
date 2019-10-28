@@ -28,12 +28,16 @@ class NewUserForm extends Component {
 
   submitNewUserInfo = async e => {
     e.preventDefault();
+    const { saveUser } = this.props;
     const { newName, newEmail, newPassword } = this.state;
     const newUser = {name: newName, email: newEmail, password: newPassword};
 
     try {
       const response = await postNewUser(newUser);
       this.setState({ status: response.status }); 
+      if (this.state.status === 201) {
+        saveUser(newName, newEmail, newPassword);
+      }
     } catch(error) {
       throw new Error(error)
     }
