@@ -8,7 +8,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import NewUserForm from '../../components/NewUserForm/NewUserForm';
 import { saveMovies, saveUser, saveFavorites } from '../../actions';
-import { fetchMovies } from '../../apiCalls.js';
+import { fetchMovies } from '../../apiCalls/apiCalls';
 
 export class App extends Component {
   async componentDidMount() {
