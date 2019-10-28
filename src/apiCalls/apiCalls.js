@@ -28,6 +28,11 @@ export const loginUser = async (userInfo) => {
     body: JSON.stringify(userInfo)
   };
 
+  let response = await fetch('http://localhost:3001/api/v1/login', options);
   
-  return await fetch('http://localhost:3001/api/v1/login', options);
+  if (response.status === 401) {
+      throw Error("* the password does not match! *")
+  }
+  
+  return response.json();
 }

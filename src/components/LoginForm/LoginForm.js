@@ -11,7 +11,7 @@ class LoginForm extends Component {
     super()
     this.state = {
       loginEmail: '',
-      loginPassWord: '',
+      loginPassword: '',
       status: null,
       loginPasswordError: ''
     }
@@ -22,7 +22,7 @@ class LoginForm extends Component {
   }
 
   clearLoginInputs = () => {
-    this.setState({ loginEmail: '', loginPassWord: '' })
+    this.setState({ loginEmail: '', loginPassword: '' })
   }
 
   loginUser = async e => {
@@ -32,25 +32,21 @@ class LoginForm extends Component {
     const user = { email: loginEmail, password: loginPassword };
    
     try {
-      const response = await loginUser(user)
-      this.setState({ status: response.status });
-      if (this.state.status === 200) {
-        setCurrentUser(loginEmail, loginPassword);
-        logIn();
-      }
+      let currentUser = await loginUser(user);
+      setCurrentUser(currentUser);
+      logIn();
+      this.setState({status: 200})
     } catch (error) {
-      throw new Error(error.message)
+      this.setState({status: 401, loginPasswordError: "* the password does not match! *"})
     }
+    
     this.clearLoginInputs();
-
   }
 
   render() {
     if (this.state.status === 200) {
       return <Redirect to='/' />
-    } else if (this.state.status === 401) {
-      this.setState({ loginPasswordError: "* the password does not match! *" })
-    }
+    } 
 
     return (
       <div>

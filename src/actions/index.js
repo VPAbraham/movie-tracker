@@ -10,10 +10,9 @@ export const saveUser = (name, email, password) => ({
   password
 })
 
-export const setCurrentUser = (email, password) => ({
+export const setCurrentUser = (user) => ({
   type: "SET_CURRENT_USER",
-  email,
-  password
+  user
 })
 
 export const saveFavorites = (id) => ({
