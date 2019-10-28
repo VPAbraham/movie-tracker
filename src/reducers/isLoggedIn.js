@@ -1,9 +1,9 @@
 export const isLoggedIn = (state = false, action) => {
   switch(action.type) {
-    case 'LOG_IN':
-      return action.isLoggedIn
-    case 'LOG_OUT':
-        return action.isLoggedIn
+    case 'LOGIN':
+      return action.loggedIn
+    case 'LOGOUT':
+        return action.loggedIn
     default:
       return state
   }

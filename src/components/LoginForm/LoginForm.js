@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import './LoginForm.scss';
-import { toggleLogin } from '../../actions';
+import { logIn } from '../../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -27,7 +27,7 @@ class LoginForm extends Component {
 
   loginUser = async e => {
     e.preventDefault();
-    const { toggleLogin } = this.props;
+    const { logIn } = this.props;
     const { loginEmail, loginPassword } = this.state;
     const user = { email: loginEmail, password: loginPassword };
     const options = {
@@ -41,9 +41,8 @@ class LoginForm extends Component {
     try {
       const response = await fetch('http://localhost:3001/api/v1/login', options);
       this.setState({ status: response.status });
-      console.log(this.state.status)
       if (this.state.status === 200) {
-        toggleLogin(1)
+        console.log(logIn());
       }
     } catch (error) {
       throw new Error(error.message)
@@ -80,7 +79,7 @@ const mapStateToProps = ({ user }) => ({
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    toggleLogin
+    logIn
   }, dispatch)
 )
 

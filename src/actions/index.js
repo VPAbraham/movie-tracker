@@ -18,7 +18,12 @@ export const saveFavorites = (id) => ({
   id
 })
 
-export const toggleLogin = (id) => ({
-  type: "TOGGLE_LOGIN",
-  id
+export const logIn = () => ({
+  type: "LOGIN",
+  loggedIn: true
+})
+
+export const logOut = () => ({
+  type: "LOGOUT",
+  loggedIn: false
 })

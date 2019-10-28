@@ -35,9 +35,9 @@ class NewUserForm extends Component {
     try {
       const response = await postNewUser(newUser);
       this.setState({ status: response.status });
-      if (response.status === 201) {
-      await saveUser(newName, newEmail, newPassword)
-      }      
+      // if (response.status === 201) {
+      // await saveUser(newName, newEmail, newPassword)
+      // }      
     } catch(error) {
       throw new Error(error)
     }
