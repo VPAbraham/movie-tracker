@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import './NewUserForm.scss'
+import { saveUser } from '../../actions'
 
 
 
@@ -22,6 +25,7 @@ class NewUserForm extends Component {
   submitNewUserInfo = async e => {
     e.preventDefault();
     const { newName, newEmail, newPassword } = this.state;
+    const { saveUser } = this.props;
     const newUser = {name: newName, email: newEmail, password: newPassword};
     const options = {
       method: 'POST',
@@ -34,6 +38,8 @@ class NewUserForm extends Component {
     try {
       const response = await fetch('http://localhost:3001/api/v1/users', options);
       this.setState({ status: response.status });
+      await console.log(this.state)
+      await saveUser(this.state.newName, this.state.newEmail, this.state.newPassword)      
     } catch(error) {
       throw new Error(error)
     }
@@ -46,7 +52,7 @@ class NewUserForm extends Component {
         
     return(
       <div className="new-user-container">
-        {/* <h3>CREATE ACCOUNT</h3> */}
+        <h3>CREATE ACCOUNT</h3>
         <section className="create-account">
           <form>
             <input className="new-user-input" type="text" placeholder="insert your name" name="newName" value={this.state.newName} onChange={this.handleChange} />
@@ -60,4 +66,14 @@ class NewUserForm extends Component {
   }
 }
 
-export default NewUserForm;
+const mapStateToProps = ({ user }) => ({
+  user
+})
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    saveUser
+  }, dispatch)
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewUserForm);
