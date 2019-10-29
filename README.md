@@ -17,7 +17,8 @@ Utilizes:
 - Jest/Enzyme testing
 - [Create React App](https://github.com/facebook/create-react-app)
 - Movie DB API
-
+--------------
+### Demo:
 
 #### Supports creating and storing users.
 Application utilizes a local API and postgres server to store users with fetch requests
