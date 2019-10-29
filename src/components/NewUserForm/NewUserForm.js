@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import './NewUserForm.scss'
 import { saveUser } from '../../actions'
 import { postNewUser } from '../../apiCalls/apiCalls';
+import PropTypes from 'prop-types';
 
 export class NewUserForm extends Component {
   constructor() {
@@ -67,14 +68,14 @@ export class NewUserForm extends Component {
   }
 }
 
-export const mapStateToProps = ({ user }) => ({
-  user
-})
-
-export const mapDispatchToProps = dispatch => (
+const mapDispatchToProps = dispatch => (
   bindActionCreators({
     saveUser
   }, dispatch)
 )
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewUserForm);
+export default connect(null, mapDispatchToProps)(NewUserForm);
+
+NewUserForm.propTypes = {
+  saveUser: PropTypes.func
+}

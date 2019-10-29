@@ -5,6 +5,7 @@ import { logIn, setCurrentUser, saveFavorites } from '../../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { loginUser, getFavorites } from '../../apiCalls/apiCalls';
+import PropTypes from 'prop-types';
 
 export class LoginForm extends Component {
   constructor() {
@@ -66,10 +67,6 @@ export class LoginForm extends Component {
   }
 }
 
-export const mapStateToProps = ({ user }) => ({
-  user
-})
-
 export const mapDispatchToProps = dispatch => (
   bindActionCreators({
     logIn,
@@ -78,4 +75,10 @@ export const mapDispatchToProps = dispatch => (
   }, dispatch)
 )
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(null, mapDispatchToProps)(LoginForm);
+
+LoginForm.propTypes = {
+  logIn: PropTypes.func,
+  setCurrentUser: PropTypes.func,
+  saveFavorites: PropTypes.func
+}

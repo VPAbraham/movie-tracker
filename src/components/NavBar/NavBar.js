@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { setCurrentUser, logOut } from '../../actions';
+import PropTypes from 'prop-types';
 
 
 export const NavBar = ({ isLoggedIn, setCurrentUser, logOut }) => {
@@ -50,3 +51,9 @@ export const mapDispatchToProps = dispatch => (
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
+
+NavBar.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  setCurrentUser: PropTypes.func,
+  logOut: PropTypes.func,
+}
