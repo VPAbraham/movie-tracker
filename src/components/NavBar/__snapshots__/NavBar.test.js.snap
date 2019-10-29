@@ -4,24 +4,29 @@ exports[`NavBar should match a snapshot 1`] = `
 <nav
   className="nav-bar"
 >
-  <h1
-    className="main-logo"
+  <Link
+    className="link-to-M-L"
+    to="/"
   >
-    <div
-      className="hidden-div"
+    <h1
+      className="main-logo"
     >
-      <span
-        className="hidden-letters"
+      <div
+        className="hidden-div"
       >
-        M
-      </span>
-      <span
-        className="hidden-letters"
-      >
-        T
-      </span>
-    </div>
-  </h1>
+        <span
+          className="hidden-letters"
+        >
+          M
+        </span>
+        <span
+          className="hidden-letters"
+        >
+          T
+        </span>
+      </div>
+    </h1>
+  </Link>
   <div
     className="menu"
   >
@@ -36,18 +41,6 @@ exports[`NavBar should match a snapshot 1`] = `
       to="/new-user"
     >
       Create New Account
-    </Link>
-    <Link
-      className="menu-item"
-      to="/favorites"
-    >
-      Favorite Movies
-    </Link>
-    <Link
-      className="menu-item"
-      to="/"
-    >
-      Sign Out
     </Link>
   </div>
 </nav>

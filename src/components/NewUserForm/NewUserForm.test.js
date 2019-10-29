@@ -1,4 +1,4 @@
-import NewUserForm from './NewUserForm';
+import { NewUserForm } from './NewUserForm';
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { Redirect } from 'react-router-dom'
