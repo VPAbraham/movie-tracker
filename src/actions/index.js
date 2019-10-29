@@ -15,9 +15,9 @@ export const setCurrentUser = (user) => ({
   user
 })
 
-export const saveFavorites = (id) => ({
+export const saveFavorites = (favorites) => ({
   type: "SAVE_FAVORITES",
-  id
+  favorites
 })
 
 export const removeFromFavorites = (id) => ({

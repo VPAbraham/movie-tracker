@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import './App.scss';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import FavoritesContainer from '../FavoritesContainer/FavoritesContainer';
-
 import NavBar from '../../components/NavBar/NavBar';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import NewUserForm from '../../components/NewUserForm/NewUserForm';
@@ -15,11 +14,17 @@ import { fetchMovies } from '../../apiCalls/apiCalls';
 export class App extends Component {
   async componentDidMount() {
     const { saveMovies } = this.props; 
+    
     try {
       const movieData = await fetchMovies();
-      await saveMovies(movieData)
+      await saveMovies(movieData);
+    } catch(error) {
+      console.log(error)
     }
-    catch {   }
+  }
+
+  toggleFavorites() {
+
   }
 
   render() {
@@ -35,10 +40,11 @@ export class App extends Component {
   }
 }
 
-const mapStateToProps = ({ movies, user, favorites }) => ({
+const mapStateToProps = ({ movies, currentUser, favorites, isLoggedIn }) => ({
   movies,
-  user,
-  favorites
+  currentUser,
+  favorites,
+  isLoggedIn
 })
 
 const mapDispatchToProps = dispatch => (

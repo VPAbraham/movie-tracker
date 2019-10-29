@@ -37,6 +37,12 @@ export const loginUser = async (userInfo) => {
   return response.json();
 }
 
+export const getFavorites = async (userId) => {
+  let url = `http://localhost:3001/api/v1/users/${userId}/moviefavorites`;
+  let response = await fetch(url);
+  return response.json();
+}
+
 export const postFavorite = async (userId, movie) => {
   let url = `http://localhost:3001/api/v1/users/${userId}/moviefavorites`;
   let options = {

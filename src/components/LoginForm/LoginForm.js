@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import './LoginForm.scss';
-import { logIn, setCurrentUser } from '../../actions';
+import { logIn, setCurrentUser, saveFavorites } from '../../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { loginUser } from '../../apiCalls/apiCalls';
+import { loginUser, getFavorites } from '../../apiCalls/apiCalls';
 
 class LoginForm extends Component {
   constructor() {
@@ -27,13 +27,15 @@ class LoginForm extends Component {
 
   loginUser = async e => {
     e.preventDefault();
-    const { logIn, setCurrentUser } = this.props;
+    const { logIn, setCurrentUser, saveFavorites } = this.props;
     const { loginEmail, loginPassword } = this.state;
     const user = { email: loginEmail, password: loginPassword };
    
     try {
       let currentUser = await loginUser(user);
+      let favorites = await getFavorites(currentUser.id);
       setCurrentUser(currentUser);
+      saveFavorites(favorites);
       logIn();
       this.setState({status: 200, loginPasswordError: ""})
     } catch (error) {
@@ -70,9 +72,9 @@ const mapStateToProps = ({ user }) => ({
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
     logIn,
-    setCurrentUser
+    setCurrentUser,
+    saveFavorites
   }, dispatch)
 )
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
