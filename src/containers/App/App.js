@@ -23,42 +23,38 @@ export class App extends Component {
     }
   }
 
-  toggleFavorites = (e, movie) => {
+  toggleFavorites = async (e, movie) => {
     e.preventDefault();
 
     const { currentUser, favorites } = this.props;
     if (favorites.length) {
-      if (favorites.map(favorite => favorite.title).includes(movie.title)) {
-        this.removeFavorite(currentUser.id, movie.movie_id)
+      let titles = favorites.map(favorite => favorite.title);
+      if (titles.includes(movie.title)) {
+        await this.removeFavorite(currentUser.id, movie.movie_id)
       } else {
-        this.addFavorite(currentUser.id, movie)
-
+        await this.addFavorite(currentUser.id, movie)
       }
     } else {
-      this.addFavorite(currentUser.id, movie)
-      this.forceUpdate()
+      await this.addFavorite(currentUser.id, movie)
     }
     this.forceUpdate()
   }
 
   addFavorite = async (userId, movie) => {
-    const { saveFavorites } = this.props;
-
     try {
       await postFavorite(userId, movie);
       let newFavorites = await getFavorites(userId);
-      saveFavorites(newFavorites);
+      this.props.saveFavorites(newFavorites);
     } catch(error) {
       console.log(error)
     }
   }
 
   removeFavorite = async (userId, movieId) => {
-    console.log(movieId)
     try {
       await deleteFavorite(userId, movieId)
       let newFavorites = await getFavorites(userId);
-      saveFavorites(newFavorites);
+      this.props.saveFavorites(newFavorites);
     } catch(error) {
       console.log(error)
     }

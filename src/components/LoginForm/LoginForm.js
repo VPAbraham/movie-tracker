@@ -5,6 +5,7 @@ import { logIn, setCurrentUser, saveFavorites } from '../../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { loginUser, getFavorites } from '../../apiCalls/apiCalls';
+import { favorites } from '../../reducers/favorites';
 
 export class LoginForm extends Component {
   constructor() {

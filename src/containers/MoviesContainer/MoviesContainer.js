@@ -17,7 +17,7 @@ export const MoviesContainer = ({ movies, toggleFavorites, favorites }) => {
 
     return (
         <Card 
-        key={movie.id}
+        key={movie.movie_id}
         movie={movie}
         poster={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
         title={movie.title}
