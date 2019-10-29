@@ -28,7 +28,7 @@ export class App extends Component {
     const { currentUser, favorites } = this.props;
     if (favorites.length) {
       if (favorites.map(favorite => favorite.title).includes(movie.title)) {
-        this.removeFavorite(currentUser.id, movie.id)
+        this.removeFavorite(currentUser.id, movie.movie_id)
       } else {
         this.addFavorite(currentUser.id, movie)
       }
@@ -50,6 +50,7 @@ export class App extends Component {
   }
 
   removeFavorite = async (userId, movieId) => {
+    console.log(movieId)
     try {
       await deleteFavorite(userId, movieId)
       let newFavorites = await getFavorites(userId);
