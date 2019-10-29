@@ -1,3 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LoginForm should match the snapshot with all data passed in 1`] = `undefined`;
+exports[`LoginForm should match the snapshot with all data passed in 1`] = `
+<div>
+  <section
+    className="login"
+  >
+    <form>
+      <input
+        className="login-input"
+        name="loginEmail"
+        onChange={[Function]}
+        placeholder="insert login e-mail"
+        type="email"
+        value=""
+      />
+      <input
+        className="login-input"
+        name="loginPassword"
+        onChange={[Function]}
+        placeholder="insert login password"
+        type="password"
+      />
+      <h4
+        style={
+          Object {
+            "color": "red",
+          }
+        }
+      />
+      <button
+        className="login-button a-login-button"
+        onClick={[Function]}
+      >
+        LOG IN
+      </button>
+    </form>
+  </section>
+</div>
+`;

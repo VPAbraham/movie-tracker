@@ -9,13 +9,10 @@ exports[`Card should match the snapshot with with all data passed in 1`] = `
     className="card-img"
     src="https://image.tmdb.org/t/p/w342$"
   />
-  <h3>
+  <h3
+    class="movie-title"
+  >
     Batman
   </h3>
-  <h5
-    className="faved"
-  >
-    Insert fave icon here
-  </h5>
 </div>
 `;

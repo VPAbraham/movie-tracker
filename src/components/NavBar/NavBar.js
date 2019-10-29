@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { setCurrentUser, logOut } from '../../actions';
 
 
-const NavBar = ({ isLoggedIn, setCurrentUser, logOut }) => {
+export const NavBar = ({ isLoggedIn, setCurrentUser, logOut }) => {
   const signOut = () => {
     setCurrentUser("", "");
     logOut();
