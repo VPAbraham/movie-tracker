@@ -65,7 +65,7 @@ export class App extends Component {
       <div className="App">
         <NavBar />
         <Route exact path='/' render={() => <MoviesContainer toggleFavorites={this.toggleFavorites}/> } />
-        <Route exact path='/favorites' render={() => <FavoritesContainer toggleFavorites={this.toggleFavorites} movies={this.props.favorites}/> } />
+        <Route exact path='/favorites' render={() => <FavoritesContainer toggleFavorites={this.toggleFavorites} favorites={this.props.favorites}/> } />
         <Route exact path='/login' render={() => <LoginForm />} />
         <Route exact path='/new-user' render={() => <NewUserForm />} />
       </div>

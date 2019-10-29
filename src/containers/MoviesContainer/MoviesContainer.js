@@ -4,15 +4,24 @@ import images from '../../assets/images';
 import '../MoviesContainer/MoviesContainer.scss'
 import { connect } from 'react-redux'
 
-export const MoviesContainer = ({ movies, toggleFavorites }) => {
+export const MoviesContainer = ({ movies, toggleFavorites, favorites }) => {
+
   const movieCards = movies.map(movie => {
-      return (
+    let favStatus = false;
+    
+    favorites.forEach(favorite =>{
+      if(favorite.movie_id === movie.movie_id) {
+        favStatus = true
+      }
+    })
+
+    return (
         <Card 
         key={movie.id}
         movie={movie}
         poster={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
         title={movie.title}
-        favorited="false"
+        favorited={favStatus}
         toggleFavorites={toggleFavorites}
         />
         )
@@ -29,8 +38,9 @@ export const MoviesContainer = ({ movies, toggleFavorites }) => {
   )
 }
 
-const mapStateToProps = ({ movies }) => ({
-  movies
+const mapStateToProps = ({ movies, favorites }) => ({
+  movies,
+  favorites
 })
 
 export default connect(mapStateToProps)(MoviesContainer)
