@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 export const FavoritesContainer = ({ favorites }) => {
+  console.log(favorites)
   const favoritesCards = favorites.map(favorite => {
     return (
       <Card

@@ -25,16 +25,20 @@ export class App extends Component {
 
   toggleFavorites = (e, movie) => {
     e.preventDefault();
+
     const { currentUser, favorites } = this.props;
     if (favorites.length) {
       if (favorites.map(favorite => favorite.title).includes(movie.title)) {
         this.removeFavorite(currentUser.id, movie.movie_id)
       } else {
         this.addFavorite(currentUser.id, movie)
+
       }
     } else {
       this.addFavorite(currentUser.id, movie)
+      this.forceUpdate()
     }
+    this.forceUpdate()
   }
 
   addFavorite = async (userId, movie) => {
@@ -65,7 +69,7 @@ export class App extends Component {
       <div className="App">
         <NavBar />
         <Route exact path='/' render={() => <MoviesContainer toggleFavorites={this.toggleFavorites}/> } />
-        <Route exact path='/favorites' render={() => <FavoritesContainer toggleFavorites={this.toggleFavorites} movies={this.props.favorites}/> } />
+        <Route exact path='/favorites' render={() => <FavoritesContainer toggleFavorites={this.toggleFavorites} favorites={this.props.favorites}/> } />
         <Route exact path='/login' render={() => <LoginForm />} />
         <Route exact path='/new-user' render={() => <NewUserForm />} />
       </div>
