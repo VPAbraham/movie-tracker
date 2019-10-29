@@ -17,7 +17,4 @@ describe('Card', () => {
   it('should match the snapshot with with all data passed in', () => {
     expect(wrapper).toMatchSnapshot()
   })
-  // it('should render with a false favorite by default', () => {
-  //   expect(wrapper.faveClass).toEqual('false') 
-  // })
 })
