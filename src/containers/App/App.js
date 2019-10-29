@@ -12,6 +12,13 @@ import { saveMovies, saveUser, saveFavorites } from '../../actions';
 import { fetchMovies, getFavorites, postFavorite, deleteFavorite } from '../../apiCalls/apiCalls';
 
 export class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      errorMsg: ""
+    }
+  }
+
   async componentDidMount() {
     const { saveMovies } = this.props; 
     
@@ -25,7 +32,12 @@ export class App extends Component {
 
   clickFavIcon = (e, movie) => {
     e.preventDefault();
-    this.props.isLoggedIn ? this.toggleFavorites(movie) : console.log('Not logged in!')
+    this.props.isLoggedIn ? this.toggleFavorites(movie) : this.setErrorMsg()
+  }
+
+  setErrorMsg = () => {
+    console.log('hi')
+    this.setState({ errorMsg: 'Please log in or create new account to add favorite movies.' });
   }
 
   toggleFavorites = async (movie) => {
@@ -68,6 +80,7 @@ export class App extends Component {
     return (
       <div className="App">
         <NavBar />
+        {this.state.errorMsg && <h2 style={{ color: "red", backgroundColor: "black", fontFamily: "'Josefin Slab', serif"}}>{this.state.errorMsg}</h2>}
         <Route exact path='/' render={() => <MoviesContainer clickFavIcon={this.clickFavIcon}/> } />
         <Route exact path='/favorites' render={() => <FavoritesContainer clickFavIcon={this.clickFavIcon} favorites={this.props.favorites}/> } />
         <Route exact path='/login' render={() => <LoginForm />} />
