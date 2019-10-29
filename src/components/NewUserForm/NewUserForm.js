@@ -6,7 +6,7 @@ import './NewUserForm.scss'
 import { saveUser } from '../../actions'
 import { postNewUser } from '../../apiCalls/apiCalls';
 
-class NewUserForm extends Component {
+export class NewUserForm extends Component {
   constructor() {
     super()
     this.state = {

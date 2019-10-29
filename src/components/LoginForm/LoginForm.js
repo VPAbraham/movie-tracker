@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { loginUser, getFavorites } from '../../apiCalls/apiCalls';
 
-class LoginForm extends Component {
+export class LoginForm extends Component {
   constructor() {
     super()
     this.state = {
