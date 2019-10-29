@@ -20,6 +20,7 @@ exports[`LoginForm should match the snapshot with all data passed in 1`] = `
         onChange={[Function]}
         placeholder="insert login password"
         type="password"
+        value=""
       />
       <h4
         style={

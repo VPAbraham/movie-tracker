@@ -22,7 +22,7 @@ describe('MoviesContainer', () => {
         release_date: "2019-10-18"
       }
     ]
-    const wrapper = shallow(
+    wrapper = shallow(
       <MoviesContainer
       movies={movies}
       />

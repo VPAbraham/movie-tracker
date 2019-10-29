@@ -25,6 +25,7 @@ export class App extends Component {
 
   toggleFavorites = async (e, movie) => {
     e.preventDefault();
+
     const { currentUser, favorites } = this.props;
     if (favorites.length) {
       let titles = favorites.map(favorite => favorite.title);
@@ -36,6 +37,7 @@ export class App extends Component {
     } else {
       await this.addFavorite(currentUser.id, movie)
     }
+    this.forceUpdate()
   }
 
   addFavorite = async (userId, movie) => {
