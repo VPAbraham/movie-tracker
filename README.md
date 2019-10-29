@@ -10,3 +10,4 @@ The Movie Tracker uses the Movie DB API to provide the user a database of multit
 - Redux
 - Jest w/ Enzyme
 
+(https://giphy.com/gifs/h4CwKnQffegg7l3hkN/html5)[]
