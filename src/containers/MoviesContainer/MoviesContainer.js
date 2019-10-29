@@ -21,9 +21,9 @@ export const MoviesContainer = ({ movies, toggleFavorites }) => {
   return (
     <div className="scroll-wrapper">
       <div className="movies-container">
-        <img className="left-arrow arrow" src={images.leftArrow} alt="left arrow"/>
+        <img className="left-arrow arrow" src={images.rightArrow} alt="left arrow"/>
         {movieCards}
-        <img className="right-arrow arrow" src={images.rightArrow} alt="right arrow"/>
+        <img className="right-arrow arrow" src={images.leftArrow} alt="right arrow"/>
       </div>
     </div>
   )

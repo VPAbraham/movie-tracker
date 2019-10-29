@@ -91,7 +91,7 @@ export const deleteFavorite = async (userId, movieId) => {
   }
 
   let response = await fetch(url, options);
-
+  console.log(response)
   if (!response.ok) {
       throw Error('Could not delete movie from favorites.')
   }
