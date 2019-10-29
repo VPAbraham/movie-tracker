@@ -4,8 +4,28 @@ const apiKey = '28964418fdafb10fc97bbbad131d01c3&language=en-US&page=1';
 export const fetchMovies = async () => {
   const response = await fetch(`${baseUrl}${apiKey}`);
   const data = await response.json();
-  return data.results
+  console.log(data.results)
+  const cleanData = data.results.map(movie => {
+    const { id, title, poster_path, release_date, vote_average, overview } = movie
+    movie = {
+      movie_id: id,
+      title: title,
+      poster_path: poster_path,
+      release_date: release_date,
+      vote_average: vote_average,
+      overview: overview
+    }
+    return movie
+  })
+  console.log(cleanData)
+  return cleanData;
 }
+
+// movie_id(Integer), title(String), 
+// poster_path(String), release_date(String), 
+// vote_average(String), overview(String)
+
+
 
 export const postNewUser = async (newUser) => {
   const options = {
@@ -54,6 +74,7 @@ export const postFavorite = async (userId, movie) => {
   }
 
   let response = await fetch(url, options);
+  console.log(response)
 
   if (!response.ok) {
     throw Error('Could not add movie to favorites.')
