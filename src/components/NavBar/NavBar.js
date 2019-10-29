@@ -29,7 +29,7 @@ const NavBar = ({ isLoggedIn, setCurrentUser, logOut }) => {
 
   return (
     <nav className="nav-bar">
-      <Link to='/'>
+      <Link className="link-to-M-L" to='/'>
         <h1 className="main-logo"><div className="hidden-div"><span className="hidden-letters">M</span><span className="hidden-letters">T</span></div></h1>
       </Link>
       {buttons}     
