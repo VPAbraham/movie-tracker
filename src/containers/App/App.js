@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import './App.scss';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
+import MovieInfo from '../../components/MovieInfo/MovieInfo';
 import FavoritesContainer from '../FavoritesContainer/FavoritesContainer';
 import NavBar from '../../components/NavBar/NavBar';
 import LoginForm from '../../components/LoginForm/LoginForm';
@@ -79,11 +80,13 @@ export class App extends Component {
   }
 
   render() {
+    const { movies } = this.props
     return (
       <div className="App">
         <NavBar />
         <h2 className="error">{this.state.errorMsg}</h2>
         <Route exact path='/' render={() => <MoviesContainer clickFavIcon={this.clickFavIcon}/> } />
+        <Route exact path='/movies/:id' component={MovieInfo} movies={movies}/>
         <Route exact path='/favorites' render={() => <FavoritesContainer clickFavIcon={this.clickFavIcon} favorites={this.props.favorites}/> } />
         <Route exact path='/login' render={() => <LoginForm />} />
         <Route exact path='/new-user' render={() => <NewUserForm />} />
