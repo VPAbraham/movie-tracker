@@ -1,3 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MoviesContainer should match the snapshot with all data passed in 1`] = `undefined`;
+exports[`MoviesContainer should match the snapshot with all data passed in 1`] = `
+<div
+  className="scroll-wrapper"
+>
+  <div
+    className="movies-container"
+  >
+    <img
+      alt="left arrow"
+      className="left-arrow arrow"
+      src="left-arrow.png"
+    />
+    <Card
+      favorited="false"
+      key="4"
+      poster="https://image.tmdb.org/t/p/w342undefined"
+      title="Joker"
+    />
+    <Card
+      favorited="false"
+      key="56"
+      poster="https://image.tmdb.org/t/p/w342undefined"
+      title="Maleficent: Mistress of Evil"
+    />
+    <Card
+      favorited="false"
+      key="70"
+      poster="https://image.tmdb.org/t/p/w342undefined"
+      title="Zombieland: Double Tap"
+    />
+    <img
+      alt="right arrow"
+      className="right-arrow arrow"
+      src="right-arrow.png"
+    />
+  </div>
+</div>
+`;
