@@ -23,38 +23,36 @@ export class App extends Component {
     }
   }
 
-  toggleFavorites = (e, movie) => {
+  toggleFavorites = async (e, movie) => {
     e.preventDefault();
     const { currentUser, favorites } = this.props;
     if (favorites.length) {
-      if (favorites.map(favorite => favorite.title).includes(movie.title)) {
-        this.removeFavorite(currentUser.id, movie.movie_id)
+      let titles = favorites.map(favorite => favorite.title);
+      if (titles.includes(movie.title)) {
+        await this.removeFavorite(currentUser.id, movie.movie_id)
       } else {
-        this.addFavorite(currentUser.id, movie)
+        await this.addFavorite(currentUser.id, movie)
       }
     } else {
-      this.addFavorite(currentUser.id, movie)
+      await this.addFavorite(currentUser.id, movie)
     }
   }
 
   addFavorite = async (userId, movie) => {
-    const { saveFavorites } = this.props;
-
     try {
       await postFavorite(userId, movie);
       let newFavorites = await getFavorites(userId);
-      saveFavorites(newFavorites);
+      this.props.saveFavorites(newFavorites);
     } catch(error) {
       console.log(error)
     }
   }
 
   removeFavorite = async (userId, movieId) => {
-    console.log(movieId)
     try {
       await deleteFavorite(userId, movieId)
       let newFavorites = await getFavorites(userId);
-      saveFavorites(newFavorites);
+      this.props.saveFavorites(newFavorites);
     } catch(error) {
       console.log(error)
     }
@@ -65,7 +63,7 @@ export class App extends Component {
       <div className="App">
         <NavBar />
         <Route exact path='/' render={() => <MoviesContainer toggleFavorites={this.toggleFavorites}/> } />
-        <Route exact path='/favorites' render={() => <FavoritesContainer toggleFavorites={this.toggleFavorites} movies={this.props.favorites}/> } />
+        <Route exact path='/favorites' render={() => <FavoritesContainer toggleFavorites={this.toggleFavorites} favorites={this.props.favorites}/> } />
         <Route exact path='/login' render={() => <LoginForm />} />
         <Route exact path='/new-user' render={() => <NewUserForm />} />
       </div>
