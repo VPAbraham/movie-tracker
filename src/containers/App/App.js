@@ -36,8 +36,10 @@ export class App extends Component {
   }
 
   setErrorMsg = () => {
-    console.log('hi')
     this.setState({ errorMsg: 'Please log in or create new account to add favorite movies.' });
+    setTimeout(() => {
+      this.setState({ errorMsg: ""})
+    }, 1600);
   }
 
   toggleFavorites = async (movie) => {
@@ -80,7 +82,7 @@ export class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        {this.state.errorMsg && <h2 style={{ color: "red", backgroundColor: "black", fontFamily: "'Josefin Slab', serif"}}>{this.state.errorMsg}</h2>}
+        <h2 className="error">{this.state.errorMsg}</h2>
         <Route exact path='/' render={() => <MoviesContainer clickFavIcon={this.clickFavIcon}/> } />
         <Route exact path='/favorites' render={() => <FavoritesContainer clickFavIcon={this.clickFavIcon} favorites={this.props.favorites}/> } />
         <Route exact path='/login' render={() => <LoginForm />} />
