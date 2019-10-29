@@ -8,7 +8,7 @@ export const MoviesContainer = ({ movies, toggleFavorites }) => {
   const movieCards = movies.map(movie => {
       return (
         <Card 
-        key={movie.id}
+        key={movie.movie_id}
         movie={movie}
         poster={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
         title={movie.title}
