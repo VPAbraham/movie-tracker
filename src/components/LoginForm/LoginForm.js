@@ -39,9 +39,10 @@ export class LoginForm extends Component {
       logIn();
       this.setState({status: 200, loginPasswordError: ""})
     } catch (error) {
+      console.log(error.message)
       this.setState({status: 401, loginPasswordError: "* the password does not match! *"})
     }
-
+    
     this.clearLoginInputs();
   }
 

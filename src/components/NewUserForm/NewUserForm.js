@@ -39,7 +39,7 @@ export class NewUserForm extends Component {
         saveUser(newName, newEmail, newPassword);
       }
     } catch(error) {
-      throw new Error(error)
+      throw Error(error)
     }
     this.clearNewUserInputs()
   }
