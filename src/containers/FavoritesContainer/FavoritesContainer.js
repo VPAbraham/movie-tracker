@@ -4,7 +4,7 @@ import images from '../../assets/images';
 import { saveFavorites } from '../../actions';
 import './FavoritesContainer.scss';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux';
 
 export const FavoritesContainer = ({ favorites }) => {
   const favoritesCards = favorites.map(favorite => {

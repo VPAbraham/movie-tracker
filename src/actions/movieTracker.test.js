@@ -44,7 +44,6 @@ describe('actions', () => {
             const name = 'Ronald';
             const email = 'default@gmail.com';
             const password = 'password';
-            const id = 4;
             const loggedIn = false;
 
             const expectedAction = {
@@ -52,12 +51,11 @@ describe('actions', () => {
                 name: 'Ronald',
                 email: 'default@gmail.com',
                 password: 'password',
-                id: 4,
                 loggedIn: false
             };
 
             //Execution
-            const result = actions.saveUser(name, email, password, id, loggedIn);
+            const result = actions.saveUser(name, email, password, loggedIn);
 
             //Expectation
             expect(result).toEqual(expectedAction)
