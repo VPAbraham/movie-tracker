@@ -4,7 +4,7 @@ exports[`App should match the snapshot 1`] = `
 <div
   className="App"
 >
-  <NavBar />
+  <Connect(NavBar) />
   <Route
     exact={true}
     path="/"
