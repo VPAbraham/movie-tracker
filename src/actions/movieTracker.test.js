@@ -65,14 +65,14 @@ describe('actions', () => {
     describe('SAVE_FAVORITES', () => {
         it('should have a type of SAVE_FAVORITES', () => {
             //Setup
-            const id = 475557;
+            const favorites = 475557;
             const expectedAction = {
                 type: 'SAVE_FAVORITES',
-                id: 475557
+                favorites: 475557
             }
             
             //Execution
-            const result = actions.saveFavorites(id)
+            const result = actions.saveFavorites(favorites)
 
 
             //Expectation
