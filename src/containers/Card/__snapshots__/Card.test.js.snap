@@ -5,14 +5,38 @@ exports[`Card should match the snapshot with with all data passed in 1`] = `
   className="card"
 >
   <img
+    alt=""
+    className="favorite-icon"
+    onClick={[Function]}
+    src="fav-inactive.png"
+  />
+  <label
+    className="favorite-label"
+  >
+    FAVORITE
+  </label>
+  <img
     alt="movie poster"
     className="card-img"
     src="https://image.tmdb.org/t/p/w342$"
   />
   <h3
-    class="movie-title"
+    className="movie-title"
   >
     Batman
   </h3>
+  <div
+    className="card-footer"
+  >
+    <img
+      className="info-icon"
+      src="movie-info.png"
+    />
+    <p
+      className="movie-desc"
+    >
+      Movie Description
+    </p>
+  </div>
 </div>
 `;
