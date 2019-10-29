@@ -29,7 +29,7 @@ export const MoviesContainer = ({ movies, clickFavIcon }) => {
   )
 }
 
-const mapStateToProps = ({ movies }) => ({
+export const mapStateToProps = ({ movies }) => ({
   movies
 })
 

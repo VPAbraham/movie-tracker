@@ -1,4 +1,4 @@
-import { LoginForm } from './LoginForm';
+import { LoginForm, mapStateToProps, mapDispatchToProps } from './LoginForm';
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { MemoryRouter } from 'react-router';
@@ -46,5 +46,30 @@ describe('LoginForm', () => {
     )
 
     expect(wrapper.find(Redirect)).toHaveLength(1)
+  })
+})
+
+describe('mapStateToProps in LoginForm', () => {
+  it('should return an object with user info', () => {
+    const mockState = {
+      user: {
+        name: 'Eric',
+        email: 'Eric@gmail.com',
+        password: 'Eric234'
+      },
+      saveUser: 'SAVE_USER'
+    }
+
+    const expected = {
+      user: {
+        name: 'Eric',
+        email: 'Eric@gmail.com',
+        password: 'Eric234'
+      }
+    }
+
+    const mappedProps = mapStateToProps(mockState);
+
+    expect(mappedProps).toEqual(expected)
   })
 })
