@@ -10,30 +10,54 @@ exports[`MoviesContainer should match the snapshot with all data passed in 1`] =
     <img
       alt="left arrow"
       className="left-arrow arrow"
-      src="left-arrow.png"
+      src="right-arrow.png"
     />
     <Card
-      favorited="false"
+      favorited={true}
       key="4"
+      movie={
+        Object {
+          "id": 4,
+          "release_date": "2019-10-18",
+          "title": "Joker",
+        }
+      }
       poster="https://image.tmdb.org/t/p/w342undefined"
       title="Joker"
+      toggleFavorites={[MockFunction]}
     />
     <Card
-      favorited="false"
+      favorited={true}
       key="56"
+      movie={
+        Object {
+          "id": 56,
+          "release_date": "2019-10-04",
+          "title": "Maleficent: Mistress of Evil",
+        }
+      }
       poster="https://image.tmdb.org/t/p/w342undefined"
       title="Maleficent: Mistress of Evil"
+      toggleFavorites={[MockFunction]}
     />
     <Card
-      favorited="false"
+      favorited={true}
       key="70"
+      movie={
+        Object {
+          "id": 70,
+          "release_date": "2019-10-18",
+          "title": "Zombieland: Double Tap",
+        }
+      }
       poster="https://image.tmdb.org/t/p/w342undefined"
       title="Zombieland: Double Tap"
+      toggleFavorites={[MockFunction]}
     />
     <img
       alt="right arrow"
       className="right-arrow arrow"
-      src="right-arrow.png"
+      src="left-arrow.png"
     />
   </div>
 </div>
