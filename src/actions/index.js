@@ -10,14 +10,18 @@ export const saveUser = (name, email, password) => ({
   password
 })
 
-export const setCurrentUser = (email, password) => ({
+export const setCurrentUser = (user) => ({
   type: "SET_CURRENT_USER",
-  email,
-  password
+  user
 })
 
-export const saveFavorites = (id) => ({
+export const saveFavorites = (favorites) => ({
   type: "SAVE_FAVORITES",
+  favorites
+})
+
+export const removeFromFavorites = (id) => ({
+  type: "REMOVE_FROM_FAVORITES",
   id
 })
 

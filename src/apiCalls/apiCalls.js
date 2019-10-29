@@ -28,6 +28,50 @@ export const loginUser = async (userInfo) => {
     body: JSON.stringify(userInfo)
   };
 
+  let response = await fetch('http://localhost:3001/api/v1/login', options);
   
-  return await fetch('http://localhost:3001/api/v1/login', options);
+  if (response.status === 401) {
+      throw Error("* the password does not match! *")
+  }
+  
+  return response.json();
+}
+
+export const getFavorites = async (userId) => {
+  let url = `http://localhost:3001/api/v1/users/${userId}/moviefavorites`;
+  let response = await fetch(url);
+  return response.json();
+}
+
+export const postFavorite = async (userId, movie) => {
+  let url = `http://localhost:3001/api/v1/users/${userId}/moviefavorites`;
+  let options = {
+    method: 'POST',
+    body: JSON.stringify(movie),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  let response = await fetch(url, options);
+
+  if (!response.ok) {
+    throw Error('Could not add movie to favorites.')
+  }
+}
+
+export const deleteFavorite = async (userId, movieId) => {
+  let url = `http://localhost:3001/api/v1/users/${userId}/moviefavorites/${movieId}`
+  let options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  let response = await fetch(url, options);
+
+  if (!response.ok) {
+      throw Error('Could not delete movie from favorites.')
+  }
 }
