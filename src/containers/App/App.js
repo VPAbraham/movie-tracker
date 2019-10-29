@@ -95,14 +95,14 @@ export class App extends Component {
   }
 }
 
-const mapStateToProps = ({ movies, currentUser, favorites, isLoggedIn }) => ({
+export const mapStateToProps = ({ movies, currentUser, favorites, isLoggedIn }) => ({
   movies,
   currentUser,
   favorites,
   isLoggedIn
 })
 
-const mapDispatchToProps = dispatch => (
+export const mapDispatchToProps = dispatch => (
   bindActionCreators({
     saveMovies,
     saveUser,
