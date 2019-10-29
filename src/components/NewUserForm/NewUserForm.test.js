@@ -1,4 +1,4 @@
-import { NewUserForm } from './NewUserForm';
+import { NewUserForm, mapStateToProps, mapDispatchToProps } from './NewUserForm';
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { Redirect } from 'react-router-dom'
@@ -44,5 +44,30 @@ describe('NewUserForm', () => {
     )
 
     expect(wrapper.find(Redirect)).toHaveLength(1)
+  })
+})
+
+describe('mapStateToProps in NewUserForm', () => {
+  it('should return an object back with the user information', () => {
+    const mockState = {
+      user: {
+        name: 'Eric',
+        email: 'Eric@gmail.com',
+        password: 'Eric234'
+      },
+      saveUser: 'SAVE_USER'
+    }
+
+    const expected = {
+      user: {
+        name: 'Eric',
+        email: 'Eric@gmail.com',
+        password: 'Eric234'
+      }
+    }
+
+    const mappedProps = mapStateToProps(mockState);
+
+    expect(mappedProps).toEqual(expected)
   })
 })

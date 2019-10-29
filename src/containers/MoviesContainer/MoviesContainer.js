@@ -38,7 +38,7 @@ export const MoviesContainer = ({ movies, toggleFavorites, favorites }) => {
   )
 }
 
-const mapStateToProps = ({ movies, favorites }) => ({
+export const mapStateToProps = ({ movies, favorites }) => ({
   movies,
   favorites
 })

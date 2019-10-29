@@ -38,11 +38,11 @@ export const NavBar = ({ isLoggedIn, setCurrentUser, logOut }) => {
 }
 
 
-const mapStateToProps = ({ isLoggedIn }) => ({
+export const mapStateToProps = ({ isLoggedIn }) => ({
   isLoggedIn
 })
 
-const mapDispatchToProps = dispatch => (
+export const mapDispatchToProps = dispatch => (
   bindActionCreators({
     setCurrentUser,
     logOut

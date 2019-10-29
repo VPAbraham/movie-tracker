@@ -67,11 +67,11 @@ export class NewUserForm extends Component {
   }
 }
 
-const mapStateToProps = ({ user }) => ({
+export const mapStateToProps = ({ user }) => ({
   user
 })
 
-const mapDispatchToProps = dispatch => (
+export const mapDispatchToProps = dispatch => (
   bindActionCreators({
     saveUser
   }, dispatch)

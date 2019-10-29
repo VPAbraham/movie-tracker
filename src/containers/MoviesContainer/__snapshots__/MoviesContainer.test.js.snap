@@ -14,7 +14,6 @@ exports[`MoviesContainer should match the snapshot with all data passed in 1`] =
     />
     <Card
       favorited={true}
-      key="4"
       movie={
         Object {
           "id": 4,
@@ -28,7 +27,6 @@ exports[`MoviesContainer should match the snapshot with all data passed in 1`] =
     />
     <Card
       favorited={true}
-      key="56"
       movie={
         Object {
           "id": 56,
@@ -42,7 +40,6 @@ exports[`MoviesContainer should match the snapshot with all data passed in 1`] =
     />
     <Card
       favorited={true}
-      key="70"
       movie={
         Object {
           "id": 70,
