@@ -6,8 +6,9 @@ import './FavoritesContainer.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-export const FavoritesContainer = ({ favorites, toggleFavorites }) => {
+export const FavoritesContainer = ({ movies, favorites, toggleFavorites }) => {
   const favoritesCards = favorites.map(favorite => {
+   
     return (
       <Card
         key={favorite.id}
@@ -33,8 +34,9 @@ export const FavoritesContainer = ({ favorites, toggleFavorites }) => {
   )
 }
 
-const mapStateToProps = ({ favorites }) => ({
-  favorites
+const mapStateToProps = ({ movies, favorites }) => ({
+  favorites,
+  movies
 })
 
 const mapDispatchToProps = dispatch => (
