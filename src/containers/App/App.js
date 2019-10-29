@@ -23,10 +23,14 @@ export class App extends Component {
     }
   }
 
-  toggleFavorites = async (e, movie) => {
+  clickFavIcon = (e, movie) => {
     e.preventDefault();
+    this.props.isLoggedIn ? this.toggleFavorites(movie) : console.log('Not logged in!')
+  }
 
+  toggleFavorites = async (movie) => {
     const { currentUser, favorites } = this.props;
+
     if (favorites.length) {
       let titles = favorites.map(favorite => favorite.title);
       if (titles.includes(movie.title)) {
@@ -64,8 +68,8 @@ export class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <Route exact path='/' render={() => <MoviesContainer toggleFavorites={this.toggleFavorites}/> } />
-        <Route exact path='/favorites' render={() => <FavoritesContainer toggleFavorites={this.toggleFavorites} favorites={this.props.favorites}/> } />
+        <Route exact path='/' render={() => <MoviesContainer clickFavIcon={this.clickFavIcon}/> } />
+        <Route exact path='/favorites' render={() => <FavoritesContainer clickFavIcon={this.clickFavIcon} favorites={this.props.favorites}/> } />
         <Route exact path='/login' render={() => <LoginForm />} />
         <Route exact path='/new-user' render={() => <NewUserForm />} />
       </div>

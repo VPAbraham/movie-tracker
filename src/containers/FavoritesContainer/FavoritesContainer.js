@@ -6,7 +6,7 @@ import './FavoritesContainer.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-export const FavoritesContainer = ({ favorites, toggleFavorites }) => {
+export const FavoritesContainer = ({ favorites, clickFavIcon }) => {
   const favoritesCards = favorites.map(favorite => {
     return (
       <Card
@@ -14,8 +14,7 @@ export const FavoritesContainer = ({ favorites, toggleFavorites }) => {
         poster={`https://image.tmdb.org/t/p/w342${favorite.poster_path}`}
         title={favorite.title}
         movie={favorite}
-        favorited="true"
-        toggleFavorites={toggleFavorites}
+        clickFavIcon={clickFavIcon}
       />
     )
   })

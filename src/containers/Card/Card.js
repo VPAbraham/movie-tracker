@@ -1,10 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import '../Card/Card.scss'
 import images from '../../assets/images';
 
-const Card = ({ movie, poster, title, favorited, toggleFavorites }, props) => {
-  let favImage = images.favInactive;
-  if(favorited === true) {
+const Card = ({ movie, poster, title, favorites, clickFavIcon }) => {
+  let favImage;
+  if (favorites.map(favorite => favorite.title).includes(title)) {
     favImage = images.favActive
   } else {
     favImage = images.favInactive
@@ -12,16 +13,21 @@ const Card = ({ movie, poster, title, favorited, toggleFavorites }, props) => {
 
   return (
     <div className="card">
-      <img className="favorite-icon" src={favImage} alt="" onClick={(e) => toggleFavorites(e, movie)} />
+      <img className="favorite-icon" src={favImage} alt="" onClick={(e) => clickFavIcon(e, movie)} />
       <label className="favorite-label">FAVORITE</label>
       <img className="card-img" src={poster} alt="movie poster" />
       <h3 className ="movie-title">{title}</h3>
       <div className='card-footer'>
-        <img className="info-icon" src={images.movieInfo} />
+        <img className="info-icon" src={images.movieInfo} alt="info icon"/>
         <p className="movie-desc">Movie Description</p>
       </div>
     </div>
   )
 }
 
-export default Card;
+const mapStateToProps = ({ favorites, isLoggedIn }) => ({
+  favorites,
+  isLoggedIn
+})
+
+export default connect(mapStateToProps)(Card);
