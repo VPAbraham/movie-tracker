@@ -39,6 +39,16 @@ export class App extends Component {
     }
   }
 
+  removeFavorite = async (userId, movieId) => {
+    try {
+      await deleteFavorite(userId, movieId)
+      let newFavorites = await getFavorites(userId);
+      saveFavorites(newFavorites);
+    } catch(error) {
+      console.log(error)
+    }
+  }
+
   render() {
     return (
       <div className="App">
