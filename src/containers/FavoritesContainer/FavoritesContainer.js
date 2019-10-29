@@ -1,10 +1,9 @@
 import React from 'react';
 import Card from '../Card/Card';
 import images from '../../assets/images';
-import { saveFavorites } from '../../actions';
 import './FavoritesContainer.scss';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 
 export const FavoritesContainer = ({ favorites, clickFavIcon }) => {
   const favoritesCards = favorites.map(favorite => {
@@ -34,10 +33,9 @@ const mapStateToProps = ({ favorites }) => ({
   favorites
 })
 
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    saveFavorites
-  }, dispatch)
-)
+export default connect(mapStateToProps)(FavoritesContainer)
 
-export default connect(mapStateToProps, mapDispatchToProps)(FavoritesContainer)
+FavoritesContainer.propTypes = {
+  favorites: PropTypes.array.isRequired,
+  clickFavIcon: PropTypes.func.isRequired
+}

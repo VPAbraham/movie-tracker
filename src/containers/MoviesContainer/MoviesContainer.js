@@ -3,6 +3,7 @@ import Card from '../Card/Card';
 import images from '../../assets/images';
 import '../MoviesContainer/MoviesContainer.scss'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
 
 export const MoviesContainer = ({ movies, clickFavIcon }) => {
   const movieCards = movies.map(movie => {
@@ -33,3 +34,8 @@ const mapStateToProps = ({ movies }) => ({
 })
 
 export default connect(mapStateToProps)(MoviesContainer)
+
+MoviesContainer.propTypes = {
+  movies: PropTypes.array.isRequired,
+  clickFavIcon: PropTypes.func.isRequired
+}

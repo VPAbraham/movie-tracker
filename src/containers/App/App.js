@@ -10,6 +10,7 @@ import LoginForm from '../../components/LoginForm/LoginForm';
 import NewUserForm from '../../components/NewUserForm/NewUserForm';
 import { saveMovies, saveUser, saveFavorites } from '../../actions';
 import { fetchMovies, getFavorites, postFavorite, deleteFavorite } from '../../apiCalls/apiCalls';
+import PropTypes from 'prop-types';
 
 export class App extends Component {
   constructor() {
@@ -107,5 +108,14 @@ const mapDispatchToProps = dispatch => (
   }, dispatch)
 )
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+App.propTypes = {
+  movies: PropTypes.array,
+  currentUser: PropTypes.object,
+  favorites: PropTypes.array,
+  isLoggedIn: PropTypes.bool,
+  saveMovies: PropTypes.func,
+  saveUser: PropTypes.func,
+  saveFavorites: PropTypes.func
+}

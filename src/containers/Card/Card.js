@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import '../Card/Card.scss'
 import images from '../../assets/images';
+import PropTypes from 'prop-types';
 
 const Card = ({ movie, poster, title, favorites, clickFavIcon }) => {
   let favImage;
@@ -25,9 +26,16 @@ const Card = ({ movie, poster, title, favorites, clickFavIcon }) => {
   )
 }
 
-const mapStateToProps = ({ favorites, isLoggedIn }) => ({
-  favorites,
-  isLoggedIn
+const mapStateToProps = ({ favorites }) => ({
+  favorites
 })
 
 export default connect(mapStateToProps)(Card);
+
+Card.propTypes = {
+  movie: PropTypes.object,
+  favorites: PropTypes.array,
+  poster: PropTypes.string,
+  title: PropTypes.string,
+  clickFavIcon: PropTypes.func
+}
