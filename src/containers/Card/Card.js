@@ -2,11 +2,12 @@ import React from 'react';
 import '../Card/Card.scss'
 import images from '../../assets/images';
 
-const Card = ({ movie, poster, title, favorited, toggleFavorites }) => {
+const Card = ({ movie, poster, title, favorited, toggleFavorites }, props) => {
   let favImage = images.favInactive;
-
   if(favorited === true) {
     favImage = images.favActive
+  } else {
+    favImage = images.favInactive
   }
 
   return (
