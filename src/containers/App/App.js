@@ -26,7 +26,6 @@ export class App extends Component {
   toggleFavorites = (e, movie) => {
     e.preventDefault();
     const { currentUser, favorites } = this.props;
-    debugger;
     if (favorites.length) {
       if (favorites.map(favorite => favorite.title).includes(movie.title)) {
         this.removeFavorite(currentUser.id, movie.id)
