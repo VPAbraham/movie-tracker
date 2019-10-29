@@ -11,3 +11,6 @@ The Movie Tracker uses the Movie DB API to provide the user a database of multit
 - Jest w/ Enzyme
 
 ![Creating User](https://media.giphy.com/media/h4CwKnQffegg7l3hkN/giphy.gif)
+
+
+![Logging In](https://media.giphy.com/media/TjqInrKdSigHhf2RHW/giphy.gif)
