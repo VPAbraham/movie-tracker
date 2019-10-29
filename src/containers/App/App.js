@@ -9,7 +9,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import NewUserForm from '../../components/NewUserForm/NewUserForm';
 import { saveMovies, saveUser, saveFavorites } from '../../actions';
-import { fetchMovies } from '../../apiCalls/apiCalls';
+import { fetchMovies, getFavorites, postFavorite, deleteFavorite } from '../../apiCalls/apiCalls';
 
 export class App extends Component {
   async componentDidMount() {
@@ -23,8 +23,20 @@ export class App extends Component {
     }
   }
 
-  toggleFavorites() {
+  toggleFavorites = () => {
 
+  }
+
+  addFavorite = async (userId, movie) => {
+    const { saveFavorites } = this.props;
+
+    try {
+      await postFavorite(userId, movie);
+      let newFavorites = await getFavorites(userId);
+      saveFavorites(newFavorites);
+    } catch(error) {
+      console.log(error)
+    }
   }
 
   render() {
