@@ -4,34 +4,19 @@
 @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700|Nanum+Myeongjo:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Cedarville+Cursive&display=swap');
 
-// font-family: 'Montserrat', sans-serif;
-// font-family: 'Nanum Gothic', sans-serif;
-// font-family: 'Nanum Myeongjo', serif;
-// font-family: 'Liu Jian Mao Cao', cursive;
-
 .nav-bar {
+  align-items: center;
   background-color: black;
   color: lightgray;
-  height: 12vh;
-  font-size: 2em;
-  vertical-align: middle;
+  display: flex;
+  font-size: 2.5em;
+  height: 10vh;
+  justify-content: space-between;
 }
 
 .main-logo {
   font-family: 'Josefin Slab', serif;
-  // font-family: 'Nanum Myeongjo', serif; //not bad
-  // font-family: 'Nanum Gothic', sans-serif;
-  // font-family: 'Montserrat', sans-serif;
-  // font-family: 'Cedarville Cursive', cursive;
-
-
-
   float: left;
-  // display: inline-block;
-
-  // .logo-second {
-  //   font-family: 'Cabin', sans-serif;
-  // }
 }
 
 .menu {
@@ -43,12 +28,6 @@
     margin: 0 13px;
     margin-top: 28px;
     font-family: 'Josefin Slab', serif;
-    // font-family: 'Nanum Myeongjo', serif;
-    // font-family: 'Nanum Gothic', sans-serif; //too plain????
-    // font-family: 'Montserrat', sans-serif;
-    // font-family: 'Cedarville Cursive', cursive;
-
-
     color: lightgray;
     font-weight: bold;
     text-decoration: none;
@@ -61,14 +40,16 @@
 
 .hidden-letters {
   display: inline;
+  vertical-align: middle;
 }
 
 .hidden-letters:after {
   width: 0px;
   overflow: hidden;
   display: inline-block;
-  vertical-align: middle;
   transition: .4s linear;
+  vertical-align: middle;
+  margin-bottom: 5px;
 }
 .hidden-letters:nth-child(1):after {
   content: 'ovie ';
@@ -77,10 +58,10 @@
   content: 'racker ';
 }
 .hidden-div:hover .hidden-letters:nth-child(1):after {
-  width: 90px;
+  width: 120px;
 }
 .hidden-div:hover .hidden-letters:nth-child(2):after {
-  width: 130px;
+  width: 160px;
 }
 
 .hidden-div {
