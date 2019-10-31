@@ -40,6 +40,7 @@
 
 .hidden-letters {
   display: inline;
+  vertical-align: middle;
 }
 
 .hidden-letters:after {
@@ -47,6 +48,8 @@
   overflow: hidden;
   display: inline-block;
   transition: .4s linear;
+  vertical-align: middle;
+  margin-bottom: 5px;
 }
 .hidden-letters:nth-child(1):after {
   content: 'ovie ';
@@ -62,6 +65,7 @@
 }
 
 .hidden-div {
+  margin-top: 28px;
   margin-left: 15px;
 }
 
