@@ -22,9 +22,9 @@ export class LoginForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  clearLoginInputs = () => {
-    this.setState({ loginEmail: '', loginPassword: '' })
-  }
+  // clearLoginInputs = () => {
+  //   this.setState({ loginEmail: '', loginPassword: '' })
+  // }
 
   loginUser = async e => {
     e.preventDefault();
@@ -33,17 +33,23 @@ export class LoginForm extends Component {
     const user = { email: loginEmail, password: loginPassword };
    
     try {
-      let currentUser = await loginUser(user);
-      let favorites = await getFavorites(currentUser.id);
-      setCurrentUser(currentUser);
-      saveFavorites(favorites);
-      logIn();
-      this.setState({status: 200, loginPasswordError: ""})
+      let currentUser;
+      let response = await loginUser(user);
+      if (response.status === 200) {
+        this.setState({ loginEmail: '', loginPassword: '', status: 200, loginPasswordError: "" })
+        currentUser = await response.json();
+        let favorites = await getFavorites(currentUser.id);
+        setCurrentUser(currentUser);
+        saveFavorites(favorites);
+        logIn();
+      } else if (response.status === 401) {
+        this.setState({ loginEmail: '', loginPassword: '', status: 401, loginPasswordError: "* the password does not match! *" })
+      } else if (response.status === 500) {
+        this.setState({ loginEmail: '', loginPassword: '', status: 500, loginPasswordError: "* Could not log in *" })
+      }
     } catch (error) {
-      this.setState({status: 401, loginPasswordError: "* the password does not match! *"})
+      console.log(error)
     }
-    
-    this.clearLoginInputs();
   }
 
   render() {

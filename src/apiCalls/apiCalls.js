@@ -30,7 +30,7 @@ export const postNewUser = async (newUser) => {
 
   let response = await fetch('http://localhost:3001/api/v1/users', options);
 
-    return response
+  return response;
 }
 
 
@@ -44,8 +44,8 @@ export const loginUser = async (userInfo) => {
   };
 
   let response = await fetch('http://localhost:3001/api/v1/login', options);
-  
-  return response.json();
+
+  return response;
 }
 
 export const getFavorites = async (userId) => {
