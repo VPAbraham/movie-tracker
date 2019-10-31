@@ -25,18 +25,21 @@ h5 {
 
 .card-footer {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-around;
+    // align-items: center;
 }
 
 .info-icon {
-    height: 50px;
-    margin: 0 10px 10px 10px;
+    height: 1.5rem;
+    margin: 0 10px;
 }
 
 .movie-desc {
     font-size: 12px;
 }
 .favorite-icon {
-    height: 50px;
-    margin: 0 10px 10px 10px;
+    height: 2.5rem;
+    position: absolute;
+    top: 4rem;
+    margin-left: 10px;
 }

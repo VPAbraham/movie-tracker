@@ -22,7 +22,6 @@ const Card = ({ movie, poster, title, favorites, clickFavIcon }) => {
   return (
     <div className="card">
       <img className="card-img" src={poster} alt="movie poster" />
-      <h3 className ="movie-title">{title}</h3>
       <div className='card-footer'>
         <Link to={{
           pathname: route,
@@ -32,6 +31,7 @@ const Card = ({ movie, poster, title, favorites, clickFavIcon }) => {
         }}>
           <img className="info-icon" src={images.movieInfo} alt="info icon"/>
         </Link>  
+        <h3 className ="movie-title">{title}</h3>
         <img className="favorite-icon" src={favImage} alt="" onClick={(e) => clickFavIcon(e, movie)} />
       </div>
     </div>

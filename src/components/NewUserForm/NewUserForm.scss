@@ -1,5 +1,6 @@
 .create-account {
     background: url('https://designshack.net/wp-content/uploads/best-subtle-black-white-background-textures.jpg');
+    background-size: cover;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -20,7 +21,7 @@ form {
 
 .new-user-input {
     font-size: 2.5em;
-    font-family: 'Cedarville Cursive', cursive;
+    font-family: 'Nanum Gothic', sans-serif;
     color: white;
     padding-left: 15px;
     border: none;
@@ -35,16 +36,9 @@ form {
     font-weight: bold;
     height: 2.5em;
     width: 700px;
-    background-color: rgba(0,0,0,0.5)
+    background-color: rgba(0, 0, 0, 0.5)
 }
 
 a.a-create-button:hover {
     background-color: white;
 }
-
-
-
-
-
-
-
