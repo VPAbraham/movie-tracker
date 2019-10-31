@@ -22,9 +22,13 @@ html{
   color: #09d3ac;
 }
 
+.error-container {
+  background-color: black;
+  height: 20px;
+}
+
 .error {
-    background-color: black;
-    color: red;
-    font-family: 'Josefin Slab', sans-serif;
-    font-size: 1em;
+  color: red;
+  font-family: 'Josefin Slab', sans-serif;
+  font-size: 1.2em;
 }

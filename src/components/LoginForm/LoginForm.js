@@ -22,10 +22,6 @@ export class LoginForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  // clearLoginInputs = () => {
-  //   this.setState({ loginEmail: '', loginPassword: '' })
-  // }
-
   loginUser = async e => {
     e.preventDefault();
     const { logIn, setCurrentUser, saveFavorites } = this.props;

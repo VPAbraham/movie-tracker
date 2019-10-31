@@ -20,24 +20,20 @@ const Card = ({ movie, poster, title, favorites, clickFavIcon }) => {
   }
 
   return (
-
     <div className="card">
-      <img className="favorite-icon" src={favImage} alt="" onClick={(e) => clickFavIcon(e, movie)} />
-      <label className="favorite-label">FAVORITE</label>
       <img className="card-img" src={poster} alt="movie poster" />
       <h3 className ="movie-title">{title}</h3>
-      <Link to={{
-        pathname: route,
-        state: {
-          movie: movie
-        }
-      }}
-      >
-        <div className='card-footer'>
+      <div className='card-footer'>
+        <Link to={{
+          pathname: route,
+          state: {
+            movie: movie
+          }
+        }}>
           <img className="info-icon" src={images.movieInfo} alt="info icon"/>
-          <p className="movie-desc">Movie Description</p>
-        </div>
-      </Link>  
+        </Link>  
+        <img className="favorite-icon" src={favImage} alt="" onClick={(e) => clickFavIcon(e, movie)} />
+      </div>
     </div>
   )
 }

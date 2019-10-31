@@ -85,7 +85,9 @@ export class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <h2 className="error">{this.state.errorMsg}</h2>
+        <div className="error-container">
+          <h2 className="error">{this.state.errorMsg}</h2>
+        </div>
         <Route exact path='/' render={() => <MoviesContainer clickFavIcon={this.clickFavIcon}/> } />
         <Route exact path='/movies/:id' component={MovieInfo} movies={movies}/>
         <Route exact path='/favorites' render={() => <FavoritesContainer clickFavIcon={this.clickFavIcon} favorites={this.props.favorites}/> } />
