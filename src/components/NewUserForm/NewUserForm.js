@@ -23,10 +23,6 @@ export class NewUserForm extends Component {
     this.setState({[e.target.name]: e.target.value});
   }
 
-  clearNewUserInputs = () => {
-    this.setState({newName: '', newEmail: '', newPassword: ''})
-  }
-
   submitNewUserInfo = async e => {
     e.preventDefault();
     const { saveUser } = this.props;
@@ -35,22 +31,21 @@ export class NewUserForm extends Component {
 
     try {
       const response = await postNewUser(newUser);
-      this.setState({ status: response.status }); 
-      if (this.state.status === 201) {
+      if (response.status === 201) {
         saveUser(newName, newEmail, newPassword);
+        this.setState({newName: '', newEmail: '', newPassword: '', status: 201, createEmailError: '' })
+      } else if (response.status === 500) {
+        this.setState({ status: response.status, createEmailError: "* this email already exists *" })
       }
     } catch(error) {
-      throw Error(error)
+      console.error(error)
     }
-    this.clearNewUserInputs()
   }
   
   render() {
     if (this.state.status === 201) {
       return <Redirect to='/login' />
-    } else if(this.state.status === 500) {
-      this.setState({ createEmailError: "* this email already exists *"  })
-    }
+    } 
  
     return(
       <div className="new-user-container">
