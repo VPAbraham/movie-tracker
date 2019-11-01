@@ -51,9 +51,9 @@ export class NewUserForm extends Component {
       <div className="new-user-container">
         <section className="create-account">
           <form>
+            <h4 className="error-msg">{this.state.createEmailError}</h4>
             <input className="new-user-input" type="text" placeholder="insert your name" name="newName" value={this.state.newName || ''} onChange={this.handleChange} />
             <input className="email-error new-user-input" type="email" placeholder="insert your e-mail" name="newEmail" value={this.state.newEmail || ''} onChange={this.handleChange} />
-            <h4 style={{color: "red"}}>{this.state.createEmailError}</h4>
             <input className="new-user-input" type="password" placeholder="insert your password" name="newPassword" value={this.state.newPassword || ''} onChange={this.handleChange} />
             <button className="create-user-button a-create-button" onClick={(e) => this.submitNewUserInfo(e)}>SUBMIT</button>
           </form>

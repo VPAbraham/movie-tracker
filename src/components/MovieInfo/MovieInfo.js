@@ -17,7 +17,7 @@ export class MovieInfo extends Component {
     <div className="movie-info">
       <img className="main-poster" src={posterPath} alt='movie poster'/>
       <div className='movie-details'>
-        <p className="mov-title">Title: {title}</p>
+        <p className="mov-title">{title}</p>
         <p className="mov-release">Release Date: {release_date}</p>
         <p className="mov-overview">Overview: {overview}</p>
       </div>  
