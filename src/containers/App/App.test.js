@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { App, mapStateToProps, mapDispatchToProps }from './App';
+import { App, mapStateToProps }from './App';
 import { fetchMovies } from '../../apiCalls/apiCalls';
 
 jest.mock('../../apiCalls/apiCalls')

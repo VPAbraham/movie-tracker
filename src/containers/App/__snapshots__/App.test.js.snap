@@ -5,10 +5,30 @@ exports[`App should match the snapshot 1`] = `
   className="App"
 >
   <Connect(NavBar) />
+  <div
+    className="error-container"
+  >
+    <h2
+      className="error"
+    />
+  </div>
   <Route
     exact={true}
     path="/"
     render={[Function]}
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(MovieInfo)",
+        "type": [Function],
+      }
+    }
+    exact={true}
+    path="/movies/:id"
   />
   <Route
     exact={true}

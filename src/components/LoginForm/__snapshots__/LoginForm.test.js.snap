@@ -6,6 +6,9 @@ exports[`LoginForm should match the snapshot with all data passed in 1`] = `
     className="login"
   >
     <form>
+      <h4
+        className="error-msg"
+      />
       <input
         className="login-input"
         name="loginEmail"
@@ -21,13 +24,6 @@ exports[`LoginForm should match the snapshot with all data passed in 1`] = `
         placeholder="insert login password"
         type="password"
         value=""
-      />
-      <h4
-        style={
-          Object {
-            "color": "red",
-          }
-        }
       />
       <button
         className="login-button a-login-button"

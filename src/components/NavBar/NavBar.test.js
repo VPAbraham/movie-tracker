@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavBar, mapStateToProps, mapDispatchToProps } from './NavBar';
+import { NavBar, mapStateToProps } from './NavBar';
 import { shallow } from 'enzyme';
 
 describe('NavBar', () => {

@@ -1,4 +1,4 @@
-import { LoginForm, mapStateToProps, mapDispatchToProps } from './LoginForm';
+import { LoginForm, mapStateToProps } from './LoginForm';
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { MemoryRouter } from 'react-router';

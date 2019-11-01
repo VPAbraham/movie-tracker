@@ -1,4 +1,4 @@
-import { NewUserForm, mapStateToProps, mapDispatchToProps } from './NewUserForm';
+import { NewUserForm, mapStateToProps } from './NewUserForm';
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { Redirect } from 'react-router-dom'
