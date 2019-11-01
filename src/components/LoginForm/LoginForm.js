@@ -57,9 +57,9 @@ export class LoginForm extends Component {
       <div>
         <section className="login">
           <form>
+            <h4 className="error-msg">{this.state.loginPasswordError}</h4>
             <input className="login-input" type="email" placeholder="insert login e-mail" name="loginEmail" value={this.state.loginEmail} onChange={this.handleChange} />
             <input className="login-input" type="password" placeholder="insert login password" name="loginPassword" value={this.state.loginPassword} onChange={this.handleChange} />
-            <h4 style={{ color: "red" }}>{this.state.loginPasswordError}</h4>
             <button className="login-button a-login-button" onClick={(e) => this.loginUser(e)}>LOG IN</button>
           </form>
         </section>

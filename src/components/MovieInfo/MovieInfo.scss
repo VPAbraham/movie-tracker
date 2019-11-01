@@ -3,40 +3,42 @@
   height: 90vh;
   color: white;
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
-  padding: 12%;
 }
 
 .main-poster {
   height: 450px;
   width: auto;
-  display: inline;
-  margin-right: 10%;
+  display: inline-block;
+  margin-right: 5%;
   border-radius: 6px;
   border: solid 2px gray;
-
 }
 
 .movie-details {
+  background: grey;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  width: 600px;
-  background: grey;
-  height: 450px;
-  border-radius: 8px;
-  text-align: left;
   font-family: 'Zilla Slab', serif;
-
+  height: 450px;
+  justify-content: flex-start;
+  padding: 25px;
+  text-align: left;
+  width: 500px;
 }
 
 .mov-title {
   font-size: 3em;
   font-weight: 700;
+  margin-bottom: 20px;
 }
 
 .mov-release {
   font-size: 2em;
+  margin-bottom: 20px;
 }
 
 .mov-overview {

@@ -4,9 +4,7 @@
     justify-content: center;
     align-items: center;
     display: flex;
-
     height: 100vh;
-
 }
 
 form {
@@ -15,8 +13,14 @@ form {
     width: 700px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    justify-content: space-evenly;
+    // justify-content: center;
+    justify-content: space-between;
+}
+
+.error-msg {
+    color: red;
+    font-size: 1.4em;
+    height: 35px;
 }
 
 .new-user-input {
